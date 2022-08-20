@@ -18,7 +18,7 @@ router.get("/new", (req, res) => {
     res.render("newServiceProvider.ejs")
 })
 
-//RE-ROUTE
+//RE-ROUTE TO APPOINTMENT CONTROLLER
 router.use("/:id/appointments", appointmentController, (req, res) => {
     Appointment.findById(req.params.id, () => {
         res.send("Appointments page")

@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Page</title>
+    <title>Service Providers - Appt</title>
 </head>
 <body>
-    <h1>Index page</h1>
+    <h1>Service Providers Index</h1>
+    <a href="/sp/new">Create New Service Provider</a>
     <% for (let i = 0; i < serviceProviders.length; i++) { %>
         <a href="/sp/<%= serviceProviders[i].id %>"><%= serviceProviders[i].name %></a>
     <% } %>

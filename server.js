@@ -12,8 +12,9 @@ const PORT = process.env.PORT
 const mongoose = require("mongoose")
 const mongoDBURI = process.env.MONGODB_URI
 mongoose.connect(mongoDBURI)
-mongoose.connection.once("open", () => {
-    console.log("Connected to MongoDB")
+const db = mongoose.connection
+db.once("open", () => {
+    console.log(`MongoDB connected at ${db.host}:${db.port}`)
 })
 
 //Middleware

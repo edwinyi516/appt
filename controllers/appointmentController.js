@@ -39,7 +39,6 @@ router.post("/", (req, res) => {
         }
         else {
             res.redirect(`/sp/${req.params.id}/appointments`)
-            console.log(createdAppointment)
         }
     })
 })
