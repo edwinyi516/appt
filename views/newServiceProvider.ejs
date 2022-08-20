@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Appointment - Appt</title>
+</head>
+<body>
+    <h1>Create New Service Provider</h1>
+    <form action="/sp" method="POST">
+        <fieldset>
+            <label for="name">Name:</label>
+            <input id="name" type="text" name="name" placeholder="Service Provider Name">
+        </fieldset>
+        <fieldset>
+            <label for="company">Company:</label>
+            <input id="company" type="text" name="company" placeholder="Service Provider Company">
+        </fieldset>
+        <fieldset>
+            <label for="phone">Phone Number:</label>
+            <input id="phone" type="text" name="phone" placeholder="Service Provider Phone Number">
+        </fieldset>
+        <fieldset>
+            <label for="email">Email:</label>
+            <input id="email" type="text" name="email" placeholder="Service Provider Email">
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

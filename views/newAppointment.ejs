@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Appointment - Appt</title>
+</head>
+<body>
+    <h1>Create New Appointment</h1>
+    <form action="/sp/<%= serviceProvider.id %>/appointments" method="POST">
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" placeholder="Appointment Title">
+        <label for="description">Description:</label>
+        <input id="description" type="text" name="description" placeholder="Appointment Description">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

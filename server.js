@@ -1,5 +1,8 @@
+//Express Setup
 const express = require("express")
 const app = express()
+
+const methodOverride = require("method-override")
 
 //Environment Variables
 require("dotenv").config()
@@ -14,8 +17,13 @@ mongoose.connection.once("open", () => {
 })
 
 //Middleware
-const appointmentController = require("./controllers/appointmentController.js")
-app.use("/appointments", appointmentController)
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'))
+
+const serviceproviderController = require("./controllers/serviceproviderController.js")
+app.use("/sp", serviceproviderController)
 
 //Landing Page
 app.get("/", (req, res) => {

@@ -1,23 +1,31 @@
 const express = require("express")
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 const Appointment = require("../models/appointments.js")
+const ServiceProvider = require("../models/serviceproviders.js")
 const app = express()
 
 //INDEX
 router.get("/", async (req, res) => {
     let appointments = await Appointment.find({})
-    res.render("index.ejs", { appointments })
+    let serviceProvider = await ServiceProvider.findById(req.params.id)
+    res.render("indexA.ejs", {
+        serviceProvider: serviceProvider,
+        appointments: appointments
+    })
 })
 
 //NEW
-router.get("/new", (req, res) => {
-    res.render("new.ejs")
+router.get("/new", async (req, res) => {
+    let serviceProvider = await ServiceProvider.findById(req.params.id)
+    res.render("newAppointment.ejs", {
+        serviceProvider: serviceProvider
+    })
 })
 
 //SHOW
 router.get("/:id", async (req, res) => {
-    let appointment = await Product.findById(req.params.id)
-    res.render("show.ejs", {
+    let appointment = await Appointment.findById(req.params.id)
+    res.render("showA.ejs", {
         appointment: appointment
     })
 })
@@ -30,7 +38,7 @@ router.post("/", (req, res) => {
             res.send(err)
         }
         else {
-            res.redirect("/appointments")
+            res.redirect(`/sp/${req.params.id}/appointments`)
         }
     })
 })
