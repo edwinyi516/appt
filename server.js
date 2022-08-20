@@ -13,6 +13,10 @@ mongoose.connection.once("open", () => {
     console.log("Connected to MongoDB")
 })
 
+//Middleware
+const appointmentController = require("./controllers/appointmentController.js")
+app.use("/appointments", appointmentController)
+
 //Landing Page
 app.get("/", (req, res) => {
     res.render("homepage.ejs")
