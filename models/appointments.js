@@ -1,8 +1,9 @@
 const mongoose = require("mongoose")
 
 const appointmentSchema = new mongoose.Schema({
-    title: String,
-    description: String
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    serviceprovider: { type: String, required: true }
 })
 
 const Appointment = mongoose.model("Appointment", appointmentSchema)

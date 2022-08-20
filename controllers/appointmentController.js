@@ -6,8 +6,8 @@ const app = express()
 
 //INDEX
 router.get("/", async (req, res) => {
-    let appointments = await Appointment.find({})
     let serviceProvider = await ServiceProvider.findById(req.params.id)
+    let appointments = await Appointment.find({ serviceprovider: `${req.params.id}` })
     res.render("indexA.ejs", {
         serviceProvider: serviceProvider,
         appointments: appointments
@@ -39,6 +39,7 @@ router.post("/", (req, res) => {
         }
         else {
             res.redirect(`/sp/${req.params.id}/appointments`)
+            console.log(createdAppointment)
         }
     })
 })
