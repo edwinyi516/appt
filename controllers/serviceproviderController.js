@@ -1,7 +1,6 @@
 const express = require("express")
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 const ServiceProvider = require("../models/serviceproviders.js")
-const app = express()
 
 const appointmentController = require("../controllers/appointmentController.js")
 const Appointment = require("../models/appointments")
@@ -25,6 +24,19 @@ router.get("/:id", async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id) 
     res.render("showSP.ejs", {
         serviceProvider: serviceProvider
+    })
+})
+
+//CREATE
+router.post("/", (req, res) => {
+    ServiceProvider.create(req.body, (err, createdServiceProvider) => {
+        if(err) {
+            console.log("error", err)
+            res.send(err)
+        }
+        else {
+            res.redirect("/sp")
+        }
     })
 })
 

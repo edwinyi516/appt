@@ -29,6 +29,9 @@ app.use("/users", userController)
 const serviceproviderController = require("./controllers/serviceproviderController.js")
 app.use("/sp", serviceproviderController)
 
+const customerController = require("./controllers/customerController.js")
+app.use("/customer", customerController)
+
 //Landing Page
 app.get("/", (req, res) => {
     res.render("homepage.ejs")

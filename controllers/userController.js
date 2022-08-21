@@ -1,5 +1,5 @@
 const express = require("express")
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
 const app = express()
@@ -12,19 +12,6 @@ router.get("/register/newcustomer", (req, res) => {
 //NEW SERVICE PROVIDER
 router.get("/register/newserviceprovider", (req, res) => {
     res.render("users/newServiceProvider.ejs")
-})
-
-//CREATE NEW SERVICE PROVIDER
-router.post("/", (req, res) => {
-    ServiceProvider.create(req.body, (err, createdServiceProvider) => {
-        if(err) {
-            console.log("error", err)
-            res.send(err)
-        }
-        else {
-            res.redirect("/sp")
-        }
-    })
 })
 
 //REGISTER MAIN PAGE
