@@ -2,13 +2,15 @@ const express = require("express")
 const router = express.Router({ mergeParams: true })
 const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
+const Customer = require("../models/customers.js")
 const app = express()
 
 //INDEX
 router.get("/", async (req, res) => {
-    let serviceProvider = await ServiceProvider.findById(req.params.id)
+    // let customer = await Customer.findById(req.params.id)
     let appointments = await Appointment.find({ serviceprovider: `${req.params.id}` })
-    res.render("indexA.ejs", {
+    let serviceProvider = await ServiceProvider.findById(req.params.id)
+    res.render("indexA_SP.ejs", {
         serviceProvider: serviceProvider,
         appointments: appointments
     })

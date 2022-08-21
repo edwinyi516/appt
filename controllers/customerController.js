@@ -10,6 +10,13 @@ router.get("/", (req, res) => {
     res.send("Customer")
 })
 
+//RE-ROUTE TO APPOINTMENT CONTROLLER
+router.use("/:id/appointments", appointmentController, (req, res) => {
+    Appointment.findById(req.params.id, () => {
+        res.send("Appointments page")
+    })
+})
+
 //SHOW
 router.get("/:id", async (req, res) => {
     let customer = await Customer.findById(req.params.id) 
