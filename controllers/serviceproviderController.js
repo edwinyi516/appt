@@ -13,11 +13,6 @@ router.get("/", async (req, res) => {
     res.render("indexSP.ejs", { serviceProviders })
 })
 
-//NEW
-router.get("/new", (req, res) => {
-    res.render("newServiceProvider.ejs")
-})
-
 //RE-ROUTE TO APPOINTMENT CONTROLLER
 router.use("/:id/appointments", appointmentController, (req, res) => {
     Appointment.findById(req.params.id, () => {
@@ -30,19 +25,6 @@ router.get("/:id", async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id) 
     res.render("showSP.ejs", {
         serviceProvider: serviceProvider
-    })
-})
-
-//CREATE
-router.post("/", (req, res) => {
-    ServiceProvider.create(req.body, (err, createdServiceProvider) => {
-        if(err) {
-            console.log("error", err)
-            res.send(err)
-        }
-        else {
-            res.redirect("/sp")
-        }
     })
 })
 

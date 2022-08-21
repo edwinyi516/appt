@@ -23,6 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'))
 
+const userController = require("./controllers/userController.js")
+app.use("/users", userController)
+
 const serviceproviderController = require("./controllers/serviceproviderController.js")
 app.use("/sp", serviceproviderController)
 

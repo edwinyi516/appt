@@ -8,7 +8,6 @@
 </head>
 <body>
     <h1>Service Providers Index</h1>
-    <a href="/sp/new">Create New Service Provider</a>
     <% for (let i = 0; i < serviceProviders.length; i++) { %>
         <a href="/sp/<%= serviceProviders[i].id %>"><%= serviceProviders[i].name %></a>
     <% } %>
