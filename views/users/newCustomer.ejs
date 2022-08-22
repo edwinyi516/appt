@@ -10,16 +10,20 @@
     <h1>Create New Customer</h1>
     <form action="/customer" method="POST">
         <fieldset>
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name" placeholder="Customer Name">
+            <label for="firstName">First Name:</label>
+            <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name">
+        </fieldset>
+        <fieldset>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name">
+        </fieldset>
+        <fieldset>
+            <label for="email">Email Address:</label>
+            <input id="email" type="text" autocomplete="off" spellcheck="false" name="email" placeholder="Email Address">
         </fieldset>
         <fieldset>
             <label for="phone">Phone Number:</label>
-            <input id="phone" type="text" name="phone" placeholder="Customer Phone Number">
-        </fieldset>
-        <fieldset>
-            <label for="email">Email:</label>
-            <input id="email" type="text" name="email" placeholder="Customer Email">
+            <input id="phone" type="text" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number">
         </fieldset>
         <input type="submit" value="Submit">
     </form>

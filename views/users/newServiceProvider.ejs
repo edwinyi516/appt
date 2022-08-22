@@ -10,20 +10,24 @@
     <h1>Create New Service Provider</h1>
     <form action="/sp" method="POST">
         <fieldset>
-            <label for="name">Name:</label>
-            <input id="name" type="text" name="name" placeholder="Service Provider Name">
+            <label for="firstName">First Name:</label>
+            <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name">
+        </fieldset>
+        <fieldset>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name">
         </fieldset>
         <fieldset>
             <label for="company">Company:</label>
-            <input id="company" type="text" name="company" placeholder="Service Provider Company">
-        </fieldset>
-        <fieldset>
-            <label for="phone">Phone Number:</label>
-            <input id="phone" type="text" name="phone" placeholder="Service Provider Phone Number">
+            <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Service Provider Company">
         </fieldset>
         <fieldset>
             <label for="email">Email:</label>
-            <input id="email" type="text" name="email" placeholder="Service Provider Email">
+            <input id="email" type="text" autocomplete="off" spellcheck="false" name="email" placeholder="Service Provider Email">
+        </fieldset>
+        <fieldset>
+            <label for="phone">Phone Number:</label>
+            <input id="phone" type="text" autocomplete="off" spellcheck="false" name="phone" placeholder="Service Provider Phone Number">
         </fieldset>
         <input type="submit" value="Submit">
     </form>
