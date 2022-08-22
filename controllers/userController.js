@@ -19,6 +19,16 @@ router.get("/register", async (req, res) => {
     res.render("users/register.ejs")
 })
 
+//SIGN IN CUSTOMER
+router.get("/signin/customer", (req, res) => {
+    res.render("users/signinCustomer.ejs")
+})
+
+//SIGN IN SERVICE PROVIDER
+router.get("/signin/serviceprovider", (req, res) => {
+    res.render("users/signinServiceProvider.ejs")
+})
+
 //SIGN IN
 router.get("/signin", (req, res) => {
     res.render("users/signin.ejs")
