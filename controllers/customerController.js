@@ -25,18 +25,5 @@ router.get("/:id", async (req, res) => {
     })
 })
 
-//CREATE
-router.post("/", (req, res) => {
-    Customer.create(req.body, (err, createdCustomer) => {
-        if(err) {
-            console.log("error", err)
-            res.send(err)
-        }
-        else {
-            res.redirect(`/customer/${createdCustomer.id}`)
-        }
-    })
-})
-
 
 module.exports = router

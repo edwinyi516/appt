@@ -29,7 +29,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'))
 
 //SESSION MIDDLEWARE
-app.unsubscribe(session({
+app.use(session({
     secret: SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
@@ -37,7 +37,12 @@ app.unsubscribe(session({
 
 //FLASH MIDDLEWARE
 app.use(flash())
-
+//CUSTOM FLASH MIDDLEWARE
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash("success_msg")
+    res.locals.error_msg = req.flash("error_msg")
+    next()
+})
 
 const userController = require("./controllers/userController.js")
 app.use("/users", userController)

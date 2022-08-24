@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Create New Service Provider</h1>
-    <%- include("../partials/errors.ejs") %>
+    <%- include("../partials/messages.ejs") %>
     <form action="/users/register/newserviceprovider" method="POST">
         <fieldset>
             <label for="firstName">First Name:</label>
@@ -25,7 +25,7 @@
         </fieldset>
         <fieldset>
             <label for="email">Email:</label>
-            <input id="email" type="text" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= typeof email != "undefined" ? email : "" %>">
+            <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= typeof email != "undefined" ? email : "" %>">
         </fieldset>
         <fieldset>
             <label for="phone">Phone Number:</label>
