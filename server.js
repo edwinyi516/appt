@@ -8,6 +8,12 @@ const methodOverride = require("method-override")
 const flash = require("connect-flash")
 const session = require("express-session")
 
+//Passport Config
+const passport = require("passport")
+require("./config/passport.js")(passport)
+
+const { ensureAuthenticated } = require("./config/auth.js")
+
 //Environment Variables
 require("dotenv").config()
 const PORT = process.env.PORT
@@ -35,14 +41,19 @@ app.use(session({
     saveUninitialized: true,
 }))
 
+//PASSPORT MIDDLEWARE
+app.use(passport.initialize())
+app.use(passport.session())
+
 //FLASH MIDDLEWARE
 app.use(flash())
 //CUSTOM FLASH MIDDLEWARE
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg")
     res.locals.error_msg = req.flash("error_msg")
+    res.locals.error = req.flash("error")
     next()
-})
+}) 
 
 const userController = require("./controllers/userController.js")
 app.use("/users", userController)
@@ -53,9 +64,17 @@ app.use("/sp", serviceproviderController)
 const customerController = require("./controllers/customerController.js")
 app.use("/customer", customerController)
 
+
 //Landing Page
 app.get("/", (req, res) => {
     res.render("homepage.ejs")
+})
+
+//Dashboard
+app.get('/dashboard', ensureAuthenticated, (req, res) => {
+    res.render("dashboard.ejs", {
+        user: req.user
+    })
 })
 
 //Port Connection

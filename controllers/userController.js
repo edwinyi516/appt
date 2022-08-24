@@ -4,14 +4,15 @@ const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
 const app = express()
 const bcrypt = require("bcrypt")
+const passport = require("passport")
 const { Router } = require("express")
 
-//NEW CUSTOMER
+//NEW CUSTOMER PAGE
 router.get("/register/newcustomer", (req, res) => {
     res.render("users/newCustomer.ejs")
 })
 
-//REGISTER NEW CUSTOMER
+//POST NEW CUSTOMER
 router.post("/register/newcustomer", (req, res) => {
     const { firstName, lastName, phone, email, password, password2 } = req.body
     let errors = []
@@ -68,7 +69,7 @@ router.post("/register/newcustomer", (req, res) => {
                         newCustomer.save()
                             .then(user => {
                                 req.flash("success_msg", "You are now registered and can log in!")
-                                res.redirect("/users/signin/customer")
+                                res.redirect("/users/signin")
                             })
                             .catch(err => console.log(err))
                     }))
@@ -77,12 +78,12 @@ router.post("/register/newcustomer", (req, res) => {
     }
 })
 
-//NEW SERVICE PROVIDER
+//NEW SERVICE PROVIDER PAGE
 router.get("/register/newserviceprovider", (req, res) => {
     res.render("users/newServiceProvider.ejs")
 })
 
-//REGISTER NEW SERVICE PROVIDER
+//POST NEW SERVICE PROVIDER
 router.post("/register/newserviceprovider", (req, res) => {
     const { firstName, lastName, company, phone, email, password, password2 } = req.body
     let errors = []
@@ -142,21 +143,12 @@ router.post("/register/newserviceprovider", (req, res) => {
                         newServiceProvider.save()
                             .then(user => {
                                 req.flash("success_msg", "You are now registered and can log in!")
-                                res.redirect("/users/signin/serviceprovider")
+                                res.redirect("/users/signin/")
                             })
                             .catch(err => console.log(err))
                     }))
                 }
             })
-            // ServiceProvider.create(req.body, (err, createdServiceProvider) => {
-    //     if(err) {
-    //         console.log("error", err)
-    //         res.send(err)
-    //     }
-    //     else {
-    //         res.redirect("/sp")
-    //     }
-    // })
     }
 })
 
@@ -165,19 +157,27 @@ router.get("/register", async (req, res) => {
     res.render("users/register.ejs")
 })
 
-//CUSTOMER SIGN IN PAGE
-router.get("/signin/customer", (req, res) => {
-    res.render("users/signinCustomer.ejs")
-})
-
-//SERVICE PROVIDER SIGN IN PAGE
-router.get("/signin/serviceprovider", (req, res) => {
-    res.render("users/signinServiceProvider.ejs")
-})
-
-//MAIN SIGN IN PAGE
+//SIGN IN PAGE
 router.get("/signin", (req, res) => {
     res.render("users/signin.ejs")
+})
+
+//POST SIGN IN
+router.post("/signin", (req, res, next) => {
+    passport.authenticate("local", {
+        successRedirect: "/dashboard",
+        failureRedirect: "/users/signin",
+        failureFlash: true
+    })(req, res, next)
+})
+
+//LOGOUT
+router.get("/logout", (req, res) => {
+    req.logout((err) => {
+        if(err) { return next(err) }
+        req.flash("success_msg", "You have been logged out")
+        res.redirect("/users/signin")
+    })
 })
 
 

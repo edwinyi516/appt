@@ -9,7 +9,6 @@ const Appointment = require("../models/appointments")
 //INDEX
 router.get("/", async (req, res) => {
     let serviceProviders = await ServiceProvider.find({})
-    console.log(serviceProviders)
     res.render("indexSP.ejs", { serviceProviders: serviceProviders })
 })
 
