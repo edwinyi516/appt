@@ -1,8 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy
-const mongoose = require("mongoose")
 const bcrypt = require('bcrypt')
 
-//Load Service Provider Model
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
 

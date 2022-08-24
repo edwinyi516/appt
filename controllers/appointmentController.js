@@ -3,7 +3,7 @@ const router = express.Router({ mergeParams: true })
 const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
-const app = express()
+
 
 //INDEX
 router.get("/", async (req, res) => {

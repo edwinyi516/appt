@@ -1,11 +1,10 @@
 const express = require("express")
 const router = express.Router({ mergeParams: true })
-const ServiceProvider = require("../models/serviceproviders.js")
-const Customer = require("../models/customers.js")
-const app = express()
 const bcrypt = require("bcrypt")
 const passport = require("passport")
-const { Router } = require("express")
+const ServiceProvider = require("../models/serviceproviders.js")
+const Customer = require("../models/customers.js")
+
 
 //NEW CUSTOMER PAGE
 router.get("/register/newcustomer", (req, res) => {

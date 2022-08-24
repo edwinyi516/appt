@@ -2,8 +2,8 @@ const express = require("express")
 const router = express.Router({ mergeParams: true })
 const ServiceProvider = require("../models/serviceproviders.js")
 
-const appointmentController = require("../controllers/appointmentController.js")
 const Appointment = require("../models/appointments")
+const appointmentController = require("../controllers/appointmentController.js")
 
 
 //INDEX

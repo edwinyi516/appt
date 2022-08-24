@@ -1,25 +1,24 @@
-//Express Setup
+/*========================================*/
+
+//SETUP
+
+//Express
 const express = require("express")
 const app = express()
-
 const methodOverride = require("method-override")
-
-//SESSIONS
+//Session
 const flash = require("connect-flash")
 const session = require("express-session")
-
-//Passport Config
+//Passport
 const passport = require("passport")
 require("./config/passport.js")(passport)
-
+//Route Authentication
 const { ensureAuthenticated } = require("./config/auth.js")
-
-//Environment Variables
+//Environment
 require("dotenv").config()
 const PORT = process.env.PORT
 const SESSION_SECRET = process.env.SESSION_SECRET
-
-//Mongoose Setup
+//Mongoose
 const mongoose = require("mongoose")
 const mongoDBURI = process.env.MONGODB_URI
 mongoose.connect(mongoDBURI)
@@ -28,44 +27,46 @@ db.once("open", () => {
     console.log(`MongoDB connected at ${db.host}:${db.port}`)
 })
 
-//Middleware
+/*========================================*/
+
+//MIDDLEWARE
+
+//Express Middleware
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'))
-
-//SESSION MIDDLEWARE
+//Session Middleware
 app.use(session({
     secret: SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
 }))
-
-//PASSPORT MIDDLEWARE
+//Passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
-
-//FLASH MIDDLEWARE
+//Flash Middleware
 app.use(flash())
-//CUSTOM FLASH MIDDLEWARE
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg")
     res.locals.error_msg = req.flash("error_msg")
     res.locals.error = req.flash("error")
     next()
-}) 
+})
 
+/*========================================*/
+
+//ROUTES
+
+//Controllers
 const userController = require("./controllers/userController.js")
 app.use("/users", userController)
-
 const serviceproviderController = require("./controllers/serviceproviderController.js")
 app.use("/sp", serviceproviderController)
-
 const customerController = require("./controllers/customerController.js")
 app.use("/customer", customerController)
 
-
-//Landing Page
+//Home Page
 app.get("/", (req, res) => {
     res.render("homepage.ejs")
 })
@@ -76,6 +77,8 @@ app.get('/dashboard', ensureAuthenticated, (req, res) => {
         user: req.user
     })
 })
+
+/*========================================*/
 
 //Port Connection
 app.listen(PORT, () => {
