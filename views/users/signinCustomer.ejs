@@ -8,5 +8,16 @@
 </head>
 <body>
     <h1>Customer Sign In Page</h1>
+    <form action="/customer" method="POST">
+        <fieldset>
+            <label for="email">Email Address:</label>
+            <input id="email" type="text" autocomplete="off" spellcheck="false" name="email" placeholder="Email Address">
+        </fieldset>
+        <fieldset>
+            <label for="password">Password</label>
+            <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" placeholder="Password">
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

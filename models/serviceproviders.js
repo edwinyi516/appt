@@ -7,7 +7,7 @@ const serviceproviderSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    usertype: { type: String, required: true, default: "serviceprovider" }
+    usertype: { type: String, default: "serviceprovider" }
 })
 
 const ServiceProvider = mongoose.model("ServiceProvider", serviceproviderSchema)
