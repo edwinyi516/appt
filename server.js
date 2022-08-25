@@ -68,7 +68,6 @@ app.use("/customer", customerController)
 
 //Home Page
 app.get("/", (req, res) => {
-    console.log(req.user)
     res.render("homepage.ejs", {
         user: req.user
     })

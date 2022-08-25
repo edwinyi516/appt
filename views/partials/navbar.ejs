@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm navbar-light">
+    <a href="/" id="nav-home-button">Appt</a>
+    <div class="auth-action">
+        <% if (user === undefined) { %>
+        <a href="/users/signin">Sign In</a>
+        <form action="/users/register">
+            <button type="submit" class="btn btn-primary" id="sign-up-button">Sign Up</button>
+        </form>
+        <% } else { %>
+            <div>Hi, <%= user.firstName %></div>
+            <a href="/users/logout" class="btn btn-primary" id="nav-logout-button">Logout</a>
+        <% } %>
+    </div>
+</nav>

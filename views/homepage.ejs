@@ -7,22 +7,20 @@
     <%- include("./partials/style.ejs") %>
     <title>Appt</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div>LOGO</div>
-    <div class="auth-action">
-        <% if (user === undefined) { %>
-        <a href="/users/signin">Sign In</a>
-        <form action="/users/register">
-            <button type="submit" class="btn btn-primary" id="sign-up-button">Sign Up</button>
-        </form>
-        <% } else { %>
-            <div>Hi, <%= user.firstName %></div>
-            <a href="/users/logout" class="btn btn-secondary" id="nav-logout-button">Logout</a>
-        <% } %>
-    </div>
-</nav>
+<%- include("./partials/navbar.ejs") %>
 <body>
-    <h1>Welcome to Appt</h1>
-    <a href="/sp">View Service Providers</a>
+    <div id="homepage-banner1">
+        <div id="banner1-1">
+            <div id="welcome-message">
+                <div id="welcome-to">Welcome to </div>
+                <div id="banner1-appt">Appt</div>
+            </div>
+            <div id="easy-appointments">Appt provides a seamless scheduling system for service providers and customers</div>
+            <a href="/sp" class="btn btn-primary" id="view-service-providers">View Service Providers</a>
+        </div>
+        <div id="banner1-2">
+            <img src="./assets/images/main-banner.png" id="main-banner-image">
+        </div>
+    </div>
 </body>
 </html>

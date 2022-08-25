@@ -8,7 +8,9 @@ const Customer = require("../models/customers.js")
 
 //NEW CUSTOMER PAGE
 router.get("/register/newcustomer", (req, res) => {
-    res.render("users/newCustomer.ejs")
+    res.render("users/newCustomer.ejs", {
+        user: req.user
+    })
 })
 
 //POST NEW CUSTOMER
@@ -79,7 +81,9 @@ router.post("/register/newcustomer", (req, res) => {
 
 //NEW SERVICE PROVIDER PAGE
 router.get("/register/newserviceprovider", (req, res) => {
-    res.render("users/newServiceProvider.ejs")
+    res.render("users/newServiceProvider.ejs", {
+        user: req.user
+    })
 })
 
 //POST NEW SERVICE PROVIDER
@@ -153,12 +157,16 @@ router.post("/register/newserviceprovider", (req, res) => {
 
 //REGISTER MAIN PAGE
 router.get("/register", async (req, res) => {
-    res.render("users/register.ejs")
+    res.render("users/register.ejs", {
+        user: req.user
+    })
 })
 
 //SIGN IN PAGE
 router.get("/signin", (req, res) => {
-    res.render("users/signin.ejs")
+    res.render("users/signin.ejs", {
+        user: req.user
+    })
 })
 
 //POST SIGN IN
@@ -175,7 +183,7 @@ router.get("/logout", (req, res) => {
     req.logout((err) => {
         if(err) { return next(err) }
         req.flash("success_msg", "You have been logged out")
-        res.redirect("/users/signin")
+        res.redirect("/")
     })
 })
 
