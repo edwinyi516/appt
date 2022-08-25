@@ -68,14 +68,22 @@ app.use("/customer", customerController)
 
 //Home Page
 app.get("/", (req, res) => {
-    res.render("homepage.ejs")
+    console.log(req.user)
+    res.render("homepage.ejs", {
+        user: req.user
+    })
 })
 
 //Dashboard
-app.get('/dashboard', ensureAuthenticated, (req, res) => {
+app.get("/dashboard", ensureAuthenticated, (req, res) => {
     res.render("dashboard.ejs", {
         user: req.user
     })
+})
+
+//Calendar
+app.get("/calendar", (req, res) => {
+    res.render("calendar.ejs")
 })
 
 /*========================================*/

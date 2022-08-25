@@ -1,0 +1,24 @@
+body {
+    background-color: #ffffff;
+}
+
+nav {
+    display: flex;
+    height: 70px;
+    background-color: #f5f5f5;
+}
+.auth-action {
+    display: flex;
+    color: #000000;
+    margin-left: auto;
+    padding-right: 15px;
+    align-items: center;
+    width: auto;
+    min-width: auto;
+}
+#sign-up-button {
+    margin-left: 20px;
+}
+#nav-logout-button {
+    margin-left: 20px;
+}

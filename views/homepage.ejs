@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./partials/style.ejs") %>
     <title>Appt</title>
 </head>
-<nav>
-    <a href="/users/signin">Sign In</a> | <a href="/users/register">Register</a>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div>LOGO</div>
+    <div class="auth-action">
+        <% if (user === undefined) { %>
+        <a href="/users/signin">Sign In</a>
+        <form action="/users/register">
+            <button type="submit" class="btn btn-primary" id="sign-up-button">Sign Up</button>
+        </form>
+        <% } else { %>
+            <div>Hi, <%= user.firstName %></div>
+            <a href="/users/logout" class="btn btn-secondary" id="nav-logout-button">Logout</a>
+        <% } %>
+    </div>
 </nav>
 <body>
     <h1>Welcome to Appt</h1>
