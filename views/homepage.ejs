@@ -7,7 +7,7 @@
     <%- include("./partials/style.ejs") %>
     <title>Appt</title>
 </head>
-<%- include("./partials/navbar.ejs") %>
+<%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
     <div id="homepage-banner1">
         <div id="banner1-1">
@@ -19,7 +19,7 @@
             <a href="/sp" class="btn btn-primary" id="view-service-providers">View Service Providers</a>
         </div>
         <div id="banner1-2">
-            <img src="./assets/images/main-banner.png" id="main-banner-image">
+            <img src="./assets/images/main-banner-image.png" id="main-banner-image">
         </div>
     </div>
 </body>

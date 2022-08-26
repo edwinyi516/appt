@@ -2,19 +2,23 @@ nav {
     display: flex;
     height: fit-content;
     background-color: #f3f3f3;
-    align-items: center;
+    align-items: baseline;
 }
 .auth-action {
     display: flex;
     color: #000000;
     margin-left: auto;
-    padding-right: 15px;
+    padding-right: 12px;
     align-items: center;
     width: auto;
     min-width: auto;
 }
+#sign-in-link {
+    font-family: "Raleway";
+}
 #sign-up-button {
-    margin-left: 20px;
+    margin-left: 30px;
+    font-family: "Raleway"
 }
 #nav-home-button {
     font-family: "Lobster";
@@ -23,6 +27,9 @@ nav {
     text-decoration: none;
     margin-left: 15px;
     margin-bottom: 10px;
+}
+.dropdown-menu {
+    font-family: "Raleway";
 }
 #nav-logout-button {
     margin-left: 20px;
@@ -55,21 +62,33 @@ nav {
     color: #007bff;
 }
 #easy-appointments {
-    font-family: "Almarai";
+    font-family: "Raleway";
     font-size: 18px;
     margin-top: 5px;
     white-space: nowrap;
 }
 #view-service-providers {
     margin-top: 60px;
+    font-family: "Raleway"
 }
 #main-banner-image {
     max-width: 500px;
     margin-bottom: -100px;
     margin-right: -35px;
-    margin-left: 100px;
+    margin-left: 40px;
 }
 
+#dashboard-title {
+    margin: 30px;
+}
+
+#myTab {
+    margin: 0px 30px;
+}
+.tab-content {
+    margin: 0px 30px;
+    padding: 30px;
+}
 
 @media (max-width: 1250px) {
     #homepage-banner1 {
