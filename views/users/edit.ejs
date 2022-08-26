@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../partials/style.ejs") %>
+    <title>Edit User - Appt</title>
+</head>
+<%- include("../partials/navbar.ejs", {user: user}) %>
+<body>
+    <h1>Edit User</h1>
+    <%- include("../partials/messages.ejs") %>
+    <a href="/dashboard">Back to Dashboard</a>
+    <form action="/users/<%= user.id %>?_method=PUT" method="POST">
+        <fieldset>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
+        </fieldset>
+        <fieldset>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
+        </fieldset>
+        <% if (user.usertype === "serviceprovider") { %>
+        <fieldset>
+            <label for="company">Company:</label>
+            <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= user.company %>">
+        </fieldset>
+        <% } %>
+        <fieldset>
+            <label for="email">Email:</label>
+            <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= user.email %>">
+        </fieldset>
+        <fieldset>
+            <label for="phone">Phone Number:</label>
+            <input id="phone" type="tel" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= user.phone %>">
+        </fieldset>
+        <input type="submit" value="Save Changes">
+    </form>
+</body>
+</html>

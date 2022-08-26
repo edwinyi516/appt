@@ -16,7 +16,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <img src="
                       <% if (!user.img) { %>
-                        ./assets/images/blank-profile-photo.jpeg
+                        /assets/images/blank-profile-photo.jpeg
                       <% } else { %>
                         <%= user.img %>
                       <% } %>
@@ -31,8 +31,6 @@
                   </li>   
                 </ul>
               </div>
-            <!-- <div>Hi, <%= user.firstName %></div>
-            <a href="/users/logout" class="btn btn-primary" id="nav-logout-button">Logout</a> -->
         <% } %>
     </div>
 </nav>

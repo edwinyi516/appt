@@ -82,20 +82,9 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
     })
 })
 
-//Calendar
-app.get("/calendar", (req, res) => {
-    res.render("calendar.ejs")
-})
-
 /*========================================*/
 
 //Port Connection
 app.listen(PORT, () => {
     console.log("Server is running on port: ", PORT)
 })
-
-
-/*========================================*/
-
-
-//DOM

@@ -27,5 +27,12 @@ router.get("/:id", async (req, res) => {
     })
 })
 
+//DESTROY
+router.delete("/:id", (req, res) => {
+    ServiceProvider.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect("/")
+    })
+})
+
 
 module.exports = router
