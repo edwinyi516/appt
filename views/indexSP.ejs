@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./partials/style.ejs") %>
     <title>Service Providers - Appt</title>
 </head>
+<%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
     <h1>Service Providers Index</h1>
     <% for (let i = 0; i < serviceProviders.length; i++) { %>

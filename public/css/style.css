@@ -1,7 +1,7 @@
 nav {
     display: flex;
     height: fit-content;
-    background-color: #f3f3f3;
+    background-color: #f0f7fd;
     align-items: baseline;
 }
 .auth-action {
@@ -22,7 +22,7 @@ nav {
 }
 #nav-home-button {
     font-family: "Lobster";
-    font-size: 40px;
+    font-size: 45px;
     color: #007bff;
     text-decoration: none;
     margin-left: 15px;
@@ -40,7 +40,7 @@ nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    padding: 85px 70px 110px 70px;
+    padding: 60px 70px 85px 70px;
     min-width: 1200px;
 }
 #welcome-message {
@@ -52,23 +52,24 @@ nav {
     font-family: "Lato";
     font-weight: 700;
     font-style: italic;
-    font-size: 62px;
+    font-size: 68px;
     color: #00438b;
     margin-right: 17px;
 }
 #banner1-appt {
     font-family: "Lobster";
-    font-size: 75px;
+    font-size: 80px;
     color: #007bff;
 }
 #easy-appointments {
     font-family: "Raleway";
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 16px;
     margin-top: 5px;
     white-space: nowrap;
 }
 #view-service-providers {
-    margin-top: 60px;
+    margin-top: 50px;
     font-family: "Raleway"
 }
 #main-banner-image {
@@ -76,6 +77,45 @@ nav {
     margin-bottom: -100px;
     margin-right: -35px;
     margin-left: 40px;
+}
+
+#homepage-banner-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 90px 0px;
+    background-color: #f7f7f7;
+}
+#optimize-text {
+    font-family: "Lato";
+    font-size: 27px;
+    color: #00438b;
+    white-space: nowrap;
+}
+.card {
+    width: 18rem;
+    margin-top: 40px;
+    font-family: "Raleway";
+    border-color: #dbecff;
+}
+.card-title {
+    font-weight: 500;
+    font-size: 21px;
+}
+.card-text {
+    font-weight: 300;
+    font-size: 17px;
+    color: #00438b;
+}
+.card-icon {
+    width: 35px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+#banner-2-get-started-button {
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: "Raleway";
 }
 
 #dashboard-title {
@@ -114,5 +154,6 @@ nav {
     }
     #main-banner-image {
         margin: auto;
+        margin-bottom: -100px;
     }
 }

@@ -9,7 +9,10 @@ const appointmentController = require("../controllers/appointmentController.js")
 //INDEX
 router.get("/", async (req, res) => {
     let serviceProviders = await ServiceProvider.find({})
-    res.render("indexSP.ejs", { serviceProviders: serviceProviders })
+    res.render("indexSP.ejs", {
+        serviceProviders: serviceProviders,
+        user: req.user
+    })
 })
 
 //RE-ROUTE TO APPOINTMENT CONTROLLER
