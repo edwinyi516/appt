@@ -12,6 +12,8 @@ const session = require("express-session")
 //Passport
 const passport = require("passport")
 require("./config/passport.js")(passport)
+//Flatpickr
+const flatpickr = require("flatpickr")
 //Route Authentication
 const { ensureAuthenticated } = require("./config/auth.js")
 //Environment

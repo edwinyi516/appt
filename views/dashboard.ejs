@@ -15,18 +15,26 @@
     </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="upcoming-appointments-tab" data-toggle="tab" href="#upcoming-appointments" role="tab" aria-controls="upcoming-appointments" aria-selected="true">Upcoming Appointments</a>
+            <a class="nav-link active" id="upcoming-appointments-tab" data-toggle="tab" href="#upcoming-appointments" role="tab" aria-controls="upcoming-appointments" aria-selected="true">Upcoming Appointments</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="past-appointments" aria-selected="false">Past Appointments</a>
-          </li>
+        </li>
+        <% if (user.usertype === "serviceprovider") { %>
         <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Profile</a>
+            <a class="nav-link" id="availability-tab" data-toggle="tab" href="#availability" role="tab" aria-controls="availability" aria-selected="false">My Availability</a>
+        </li>
+        <% } %>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Profile</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="upcoming-appointments" role="tabpanel" aria-labelledby="upcoming-appointments-tab">Upcoming appointments</div>
+        <div class="tab-pane fade show active" id="upcoming-appointments" role="tabpanel" aria-labelledby="upcoming-appointments-tab"><%- include("./partials/dashboard/upcoming.ejs", {user: user}) %></div>
         <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="past-appointments-tab">Past Appointments</div>
+        <% if (user.usertype === "serviceprovider") { %>
+        <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab"><%- include("./partials/dashboard/availability.ejs", {user: user}) %></div>
+        <% } %>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profile Info</div>
       </div>
 </body>
