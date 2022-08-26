@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt")
 const passport = require("passport")
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
+const { ensureAuthenticated } = require("../config/auth.js")
 
 
 //NEW CUSTOMER PAGE
@@ -166,15 +167,15 @@ router.get("/register", async (req, res) => {
     })
 })
 
-//EDIT
-router.get("/editprofile", (req, res) => {
+//EDIT USER
+router.get("/editprofile", ensureAuthenticated, (req, res) => {
     res.render("users/edit.ejs", {
         user: req.user
     })
 })
 
-//UPDATE
-router.put("/:id", (req, res) => {
+//UPDATE USER
+router.put("/:id", ensureAuthenticated, (req, res) => {
     if (req.user.usertype === "serviceprovider") {
         const { firstName, lastName, company, phone, email } = req.body
         let errors = []
@@ -257,6 +258,20 @@ router.put("/:id", (req, res) => {
     }
 })
 
+//DELETE USER
+router.delete("/deleteuser", ensureAuthenticated, (req, res) => {
+    if(req.user.usertype === "serviceprovider") {
+        ServiceProvider.findByIdAndRemove(req.user.id, (err, data) => {
+            res.redirect("/")
+        })
+    }
+    else {
+        Customer.findByIdAndRemove(req.user.id, (err, data) => {
+            res.redirect("/")
+        })
+    }
+})
+
 //SIGN IN PAGE
 router.get("/signin", (req, res) => {
     res.render("users/signin.ejs", {
@@ -274,7 +289,7 @@ router.post("/signin", (req, res, next) => {
 })
 
 //LOGOUT
-router.get("/logout", (req, res) => {
+router.get("/logout", ensureAuthenticated, (req, res) => {
     req.logout((err) => {
         if(err) { return next(err) }
         req.flash("success_msg", "You have been logged out")

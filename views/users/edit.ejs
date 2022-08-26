@@ -38,9 +38,8 @@
         <input type="submit" value="Save Changes">
     </form>
 
-    <!-- Button trigger modal -->
+    <!-- Modal Trigger -->
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Delete User</button>
-  
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -56,7 +55,9 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger">Delete User</button>
+            <form action="/users/deleteuser?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Delete User</button>
+            </form>
             </div>
         </div>
         </div>

@@ -82,6 +82,11 @@ app.get("/dashboard", ensureAuthenticated, (req, res) => {
     })
 })
 
+//Unmatched Route Redirect
+app.get("*", (req, res) => {
+    res.redirect("/")
+})
+
 /*========================================*/
 
 //Port Connection
