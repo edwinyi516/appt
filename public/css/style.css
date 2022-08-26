@@ -81,6 +81,9 @@ nav {
 #dashboard-title {
     margin: 30px;
 }
+.availability-day {
+    margin: 0px 30px 30px 30px;
+}
 
 #myTab {
     margin: 0px 30px;
@@ -89,6 +92,8 @@ nav {
     margin: 0px 30px;
     padding: 30px;
 }
+
+
 
 @media (max-width: 1250px) {
     #homepage-banner1 {
