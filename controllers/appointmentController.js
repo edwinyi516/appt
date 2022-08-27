@@ -3,6 +3,7 @@ const router = express.Router({ mergeParams: true })
 const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
+const flatpickr = require("flatpickr")
 
 
 //INDEX
@@ -12,6 +13,7 @@ router.get("/", async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
     res.render("indexA_SP.ejs", {
         serviceProvider: serviceProvider,
+        user: req.user,
         appointments: appointments
     })
 })
@@ -20,7 +22,8 @@ router.get("/", async (req, res) => {
 router.get("/new", async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
     res.render("newAppointment.ejs", {
-        serviceProvider: serviceProvider
+        serviceProvider: serviceProvider,
+        user: req.user,
     })
 })
 

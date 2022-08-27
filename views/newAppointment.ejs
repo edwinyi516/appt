@@ -4,17 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("./partials/style.ejs") %>
     <title>New Appointment - Appt</title>
 </head>
+<%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
-    <h1>Boko an Appointment with <%= serviceProvider.company %></h1>
-    <form action="/sp/<%= serviceProvider.id %>/appointments" method="POST">
-        <label for="title">Title:</label>
-        <input id="title" type="text" name="title" placeholder="Appointment Title">
-        <label for="description">Description:</label>
-        <input id="description" type="text" name="description" placeholder="Appointment Description">
-        <input type="hidden" id="serviceprovider" name="serviceprovider" value="<%= serviceProvider.id %>">
-        <input type="submit" value="Submit">
-    </form>
+    <h1>Book an Appointment with <%= serviceProvider.company %></h1>
+    <form name="new-appointment-form" id="new-appointment-form" action="WHOOOOOO" method="POST">
+        <label for="chosenAppointmentType">Choose appointment type: </label>
+        <select name="chosenAppointmentType" id="chosenAppointmentType" form="new-appointment-form">
+            <option id="select-one" value="" disabled selected>Select One</option>
+            <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
+            <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].title %>"><%= serviceProvider.appointmentTypes[i].title %></option>
+            <% } %>
+        </select>
+        <fieldset class="availability-date" id="availability-date">
+            <label class="form-check-label" for="availableSaturday">Choose a date:</label>
+            <div class="availability-block" id="availability-block">
+                <input class="form-control current-availability-date" name="chosenDate" id="chosenDate" value="">
+            </div>
+        </fieldset>
+        <fieldset class="availability-time" id="availability-time">
+            <label class="form-check-label" for="availabilityTime">Choose a date:</label>
+            <div class="availability-block" id="availability-block">
+                <input class="form-control current-availability-time" name="chosenTime" id="chosenTime" value="">
+            </div>
+        </fieldset>
+        <input id="submit-button" type="submit" value="Book Appointment">
+    <script>
+        //DOM
+        let chosenAppointmentType = document.querySelector("#chosenAppointmentType")
+        let selectOne = document.querySelector("#select-one")
+        let appointmentTypeTitle = document.querySelector("#appointment-type-title")
+        let availabilityDate = document.querySelector("#availability-date")
+        let chosenDate = document.querySelector("#chosenDate")
+        let submitButton = document.querySelector("#submit-button")
+
+        //Default Styles
+        availabilityDate.style.display = "none"
+        submitButton.style.display ="none"
+
+        //Event Listeners
+        chosenAppointmentType.addEventListener("change", () => {
+            if (selectOne.selected === true) {
+                availabilityDate.style.display = "none"
+            }
+            else {
+                availabilityDate.style.display = "block"
+            }
+        })
+        availabilityDate.addEventListener("change", () => {
+            if (chosenDate !== "") {
+                submitButton.style.display = "block"
+            }
+        })
+
+        //Flatpickr Configuration
+        flatpickr(".current-availability-date", {
+            minDate: "today",
+            maxDate: new Date().fp_incr(28),
+            dateFormat: "m-d-Y",
+            "disable": [
+                (date) => {
+                    return (date.getDay() === 0 || date.getDay() === 6);
+                }
+            ]
+        })
+        flatpickr(".current-availability-time", {
+            enableTime: true,
+            noCalendar: true,
+            time_24hr: false,
+            dateFormat: "h:i K",
+            minuteIncrement: 15
+        })
+    </script>
 </body>
 </html>
