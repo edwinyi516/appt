@@ -11,7 +11,7 @@
 <body>
     <h1>Edit Profile</h1>
     <%- include("../partials/messages.ejs") %>
-    <a href="/dashboard">Back to Dashboard</a>
+    <a href="/dashboard">Dashboard</a>
     <form action="/users/<%= user.id %>?_method=PUT" method="POST">
         <fieldset>
             <label for="firstName">First Name:</label>
@@ -39,13 +39,13 @@
     </form>
 
     <!-- Modal Trigger -->
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">Delete User</button>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete User</button>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Delete User</h5>
+            <h5 class="modal-title" id="deleteModalTitle">Delete User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

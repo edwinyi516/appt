@@ -30,5 +30,47 @@ router.get("/:id", async (req, res) => {
     })
 })
 
+//UPDATE
+router.put("/updateavailability", (req, res) => {
+    if (req.body.availableSunday === 'on') {
+		req.body.availableSunday = true;
+	} else {
+		req.body.availableSunday = false;
+	}
+    if (req.body.availableMonday === 'on') {
+		req.body.availableMonday = true;
+	} else {
+		req.body.availableMonday = false;
+	}
+    if (req.body.availableTuesday === 'on') {
+		req.body.availableTuesday = true;
+	} else {
+		req.body.availableTuesday = false;
+	}
+    if (req.body.availableWednesday === 'on') {
+		req.body.availableWednesday = true;
+	} else {
+		req.body.availableWednesday = false;
+	}
+    if (req.body.availableThursday === 'on') {
+		req.body.availableThursday = true;
+	} else {
+		req.body.availableThursday = false;
+	}
+    if (req.body.availableFriday === 'on') {
+		req.body.availableFriday = true;
+	} else {
+		req.body.availableFriday = false;
+	}
+    if (req.body.availableSaturday === 'on') {
+		req.body.availableSaturday = true;
+	} else {
+		req.body.availableSaturday = false;
+	}
+    ServiceProvider.findByIdAndUpdate(req.user.id, req.body, { new: true }, (err, updatedSP) => {
+        res.redirect("/dashboard")
+    })
+})
+
 
 module.exports = router

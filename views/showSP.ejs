@@ -7,11 +7,10 @@
     <title>Service Provider Show Page - Appt</title>
 </head>
 <body>
-    <h1>Show page for <%= serviceProvider.firstName %></h1>
-    <p>Company: <%= serviceProvider.company %></p>
+    <h1><%= serviceProvider.company %></h1>
     <p>Phone: <%= serviceProvider.phone %></p>
     <p>Email: <%= serviceProvider.email %></p>
     <br>
-    <a href="<%= serviceProvider.id %>/appointments">View All Appointments</a>
+    <a href="<%= serviceProvider.id %>/appointments/new">Book an Appointment</a>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <title>New Appointment - Appt</title>
 </head>
 <body>
-    <h1>Create New Appointment</h1>
+    <h1>Boko an Appointment with <%= serviceProvider.company %></h1>
     <form action="/sp/<%= serviceProvider.id %>/appointments" method="POST">
         <label for="title">Title:</label>
         <input id="title" type="text" name="title" placeholder="Appointment Title">
