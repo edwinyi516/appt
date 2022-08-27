@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 })
 
 //POST NEW APPOINTMENT TYPE
-router.put("/newAppointmentType", ensureAuthenticated, (req, res) => {
+router.put("/newappointmenttype", ensureAuthenticated, (req, res) => {
     let newAppointmentType = { "title": req.body.appointmentTypeTitle, "description": req.body.appointmentTypeDescription, "duration": req.body.appointmentTypeDuration }
     ServiceProvider.findByIdAndUpdate(req.user.id, { $push: { appointmentTypes: newAppointmentType } }, () => {
         req.flash("success_msg", "New appointment type created")
@@ -26,15 +26,13 @@ router.put("/newAppointmentType", ensureAuthenticated, (req, res) => {
     })
 })
 
-//EDIT APPOINTMENT TYPE
-router.put("/editAppointmentType", ensureAuthenticated, (req, res) => {
-    let newAppointmentType = { "title": req.body.appointmentTypeTitle, "description": req.body.appointmentTypeDescription, "duration": req.body.appointmentTypeDuration }
-    ServiceProvider.findByIdAndUpdate(req.user.id, { $set: { appointmentTypes: newAppointmentType } }, () => {
-        req.flash("success_msg", "Appointment type updated")
-        res.redirect(`/dashboard`)
+//DELETE APPOINTMENT TYPE
+router.delete("/deleteAppointmentType/:id", ensureAuthenticated, (req, res) => {
+    ServiceProvider.findOneAndUpdate(req.user.id, { $pull: { "appointmentTypes": { "_id": req.params.id } } }, (err, data) => {
+        req.flash("success_msg", "Appointment type deleted")
+        res.redirect("/dashboard")
     })
 })
-
 
 //RE-ROUTE TO APPOINTMENT CONTROLLER
 router.use("/:id/appointments", appointmentController, (req, res) => {

@@ -30,20 +30,29 @@
         </li>
         <% } %>
         <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Profile</a>
+            <a class="nav-link" id="my-profile-tab" data-toggle="tab" href="#my-profile" role="tab" aria-controls="my-profile" aria-selected="false">My Profile</a>
         </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="upcoming-appointments" role="tabpanel" aria-labelledby="upcoming-appointments-tab"><%- include("./partials/dashboard/upcoming.ejs", {user: user}) %></div>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="upcoming-appointments" role="tabpanel" aria-labelledby="upcoming-appointments-tab">
+            <%- include("./partials/dashboard/upcoming.ejs", {user: user}) %>
+        </div>
         <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="past-appointments-tab">Past Appointments</div>
-        <% if (user.usertype === "serviceprovider") { %>
-        <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab"><%- include("./partials/dashboard/availability.ejs", {user: user}) %></div>
-        <div class="tab-pane fade" id="appointment-types" role="tabpanel" aria-labelledby="appointment-types-tab"><%- include("./partials/dashboard/appointmentTypes.ejs", {user: user}) %></div>
-        <% } %>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade" id="my-profile" role="tabpanel" aria-labelledby="my-profile-tab">
             <%- include("./partials/dashboard/profile.ejs", {user: user}) %>
         </div>
-      </div>
+        <% if (user.usertype === "serviceprovider") { %>
+        <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
+            <%- include("./partials/dashboard/availability.ejs", {user: user}) %>
+        </div>
+        <div class="tab-pane fade" id="appointment-types" role="tabpanel" aria-labelledby="appointment-types-tab">
+            <%- include("./partials/dashboard/appointmentTypes.ejs", {user: user}) %>
+        </div>
+        <% } %>
+        <div class="tab-pane fade" id="my-profile" role="tabpanel" aria-labelledby="my-profile-tab">
+            <%- include("./partials/dashboard/profile.ejs", {user: user}) %>
+        </div>
+    </div>
     <script>
         flatpickr(".availability-time-start", {
             enableTime: true,
