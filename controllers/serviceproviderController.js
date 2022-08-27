@@ -68,6 +68,7 @@ router.put("/updateavailability", (req, res) => {
 		req.body.availableSaturday = false;
 	}
     ServiceProvider.findByIdAndUpdate(req.user.id, req.body, { new: true }, (err, updatedSP) => {
+        req.flash("success_msg", "Changes have been saved")
         res.redirect("/dashboard")
     })
 })

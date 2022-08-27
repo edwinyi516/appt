@@ -29,7 +29,7 @@ const serviceproviderSchema = new mongoose.Schema({
     availableSaturday: { type: Boolean, default: false },
     saturdayStart: { type: String, default: "08:00" },
     saturdayEnd: { type: String, default: "16:00" },
-    unavailableDates: { type: Array },
+    unavailableDates: { type: Array, default: [] },
     usertype: { type: String, default: "serviceprovider" }
 })
 

@@ -13,6 +13,7 @@
         <h1>Dashboard</h1>
         <p>Hi, <%= user.firstName %>! Welcome to Appt!</p>
     </div>
+    <%- include("./partials/messages.ejs") %>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="upcoming-appointments-tab" data-toggle="tab" href="#upcoming-appointments" role="tab" aria-controls="upcoming-appointments" aria-selected="true">Upcoming Appointments</a>
@@ -53,6 +54,11 @@
             time_24hr: false,
             dateFormat: "h:i K",
             minuteIncrement: 15
+        })
+        flatpickr(".unavailable-dates", {
+            minDate: "today",
+            mode: "multiple",
+            dateFormat: "m-d-Y"
         })
     </script>
 </body>

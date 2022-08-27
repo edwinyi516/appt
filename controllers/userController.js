@@ -211,6 +211,7 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
                     }
                     else {
                         ServiceProvider.findByIdAndUpdate(req.user.id, { $set: { firstName: firstName, lastName: lastName, company: company, email: email, phone: phone } }, () => {
+                            req.flash("success_msg", "Changes have been saved")
                             res.redirect(`/dashboard`)
                         })
                     }
@@ -250,6 +251,7 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
                     }
                     else {
                         Customer.findByIdAndUpdate(req.user.id, { $set: { firstName: firstName, lastName: lastName, email: email, phone: phone } }, () => {
+                            req.flash("success_msg", "Changes have been saved")
                             res.redirect(`/dashboard`)
                         })
                     }
