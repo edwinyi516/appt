@@ -5,6 +5,8 @@ const ServiceProvider = require("../models/serviceproviders.js")
 const Appointment = require("../models/appointments")
 const appointmentController = require("../controllers/appointmentController.js")
 
+const { ensureAuthenticated } = require("../config/auth.js")
+
 
 //INDEX
 router.get("/", async (req, res) => {
@@ -14,6 +16,25 @@ router.get("/", async (req, res) => {
         user: req.user
     })
 })
+
+//POST NEW APPOINTMENT TYPE
+router.put("/newAppointmentType", ensureAuthenticated, (req, res) => {
+    let newAppointmentType = { "title": req.body.appointmentTypeTitle, "description": req.body.appointmentTypeDescription, "duration": req.body.appointmentTypeDuration }
+    ServiceProvider.findByIdAndUpdate(req.user.id, { $push: { appointmentTypes: newAppointmentType } }, () => {
+        req.flash("success_msg", "New appointment type created")
+        res.redirect(`/dashboard`)
+    })
+})
+
+//EDIT APPOINTMENT TYPE
+router.put("/editAppointmentType", ensureAuthenticated, (req, res) => {
+    let newAppointmentType = { "title": req.body.appointmentTypeTitle, "description": req.body.appointmentTypeDescription, "duration": req.body.appointmentTypeDuration }
+    ServiceProvider.findByIdAndUpdate(req.user.id, { $set: { appointmentTypes: newAppointmentType } }, () => {
+        req.flash("success_msg", "Appointment type updated")
+        res.redirect(`/dashboard`)
+    })
+})
+
 
 //RE-ROUTE TO APPOINTMENT CONTROLLER
 router.use("/:id/appointments", appointmentController, (req, res) => {

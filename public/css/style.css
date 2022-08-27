@@ -133,7 +133,13 @@ nav {
     margin: 0px 30px;
     padding: 30px;
 }
-
+#appointment-types-card-deck {
+    display: flex;
+    justify-content: center;
+}
+#appointment-type-card {
+    max-width: 50%;
+}
 
 
 @media (max-width: 1250px) {

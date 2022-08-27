@@ -1,1 +1,110 @@
-<h1>Appointment Types</h1>
+<!-- Modal Trigger -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAppointmentTypeModal">New Appointment Type</button>
+<!-- Modal -->
+<div class="modal fade" id="newAppointmentTypeModal" tabindex="-1" role="dialog" aria-labelledby="newAppointmentTypeModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="newAppointmentTypeModalTitle">New Appointment Type</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="appointmenttypeform" action="/sp/newappointmenttype?_method=PUT" method="POST">
+                <fieldset>
+                    <label for="appointmentTypeTitle">Title: </label>
+                    <input id="appointmentTypeTitle" type="text" autocomplete="off" spellcheck="false" name="appointmentTypeTitle" placeholder="Appointment Type Title">
+                </fieldset>
+                <fieldset>
+                    <label for="appointmentTypeDescription">Description: </label>
+                    <input id="appointmentTypeDescription" type="textarea" autocomplete="off" spellcheck="false" name="appointmentTypeDescription" placeholder="Appointment Type Description">
+                </fieldset>
+                <fieldset>
+                    <label for="appointmentTypeDuration">Duration: </label>
+                    <select name="appointmentTypeDuration" id="appointmentTypeDuration" form="appointmenttypeform">
+                        <option value="" disabled selected>Choose a duration</option>
+                        <option value="15">15 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="90">1 hour 30 minutes</option>
+                        <option value="120">2 hours</option>
+                        <option value="0">> 2 hours</option>
+                      </select>
+                </fieldset>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Create New Appointment Type</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+    <div class="card-deck" id="appointment-types-card-deck">
+        <% for (i = 0; i < user.appointmentTypes.length; i++) { %>
+        <div class="card mx-4" id="appointment-type-card">
+            <div class="card-body">
+                <h5 class="card-title"><%= user.appointmentTypes[i].title %></h5>
+                <p class="card-text"><%= user.appointmentTypes[i].description %></p>
+                <p class="card-text">Duration: 
+                    <% if (user.appointmentTypes[i].duration <= 45) { %>
+                        <%= user.appointmentTypes[i].duration %> minutes
+                    <% } else if (user.appointmentTypes[i].duration === 60) { %>
+                        1 hour
+                    <% } else if (user.appointmentTypes[i].duration === 90) { %>
+                        1 hour 30 minutes
+                    <% } else if (user.appointmentTypes[i].duration === 120) { %>
+                        2 hours
+                    <% } else if (user.appointmentTypes[i].duration === 0) { %>
+                        > 2 hours
+                    <% } %>
+                    </p>
+                <!-- Modal Trigger -->
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editAppointmentTypeModal">Edit Appointment Type</button>
+                <!-- Modal -->
+                <div class="modal fade" id="editAppointmentTypeModal" tabindex="-1" role="dialog" aria-labelledby="editAppointmentTypeModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editAppointmentTypeModalTitle">Edit Appointment Type</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="editappointmenttypeform" action="/sp/editappointmenttype?_method=PUT" method="POST">
+                                <fieldset>
+                                    <label for="appointmentTypeTitle">Title: </label>
+                                    <input id="appointmentTypeTitle" type="text" autocomplete="off" spellcheck="false" name="appointmentTypeTitle" placeholder="Appointment Type Title" value="<%= user.appointmentTypes[i].title %>">
+                                </fieldset>
+                                <fieldset>
+                                    <label for="appointmentTypeDescription">Description: </label>
+                                    <input id="appointmentTypeDescription" type="textarea" autocomplete="off" spellcheck="false" name="appointmentTypeDescription" placeholder="Appointment Type Description" value="<%= user.appointmentTypes[i].description %>">
+                                </fieldset>
+                                <fieldset>
+                                    <label for="appointmentTypeDuration">Duration: </label>
+                                    <select name="appointmentTypeDuration" id="appointmentTypeDuration" form="editappointmenttypeform">
+                                        <option value="" disabled>Choose a duration</option>
+                                        <option value="15" <% if(user.appointmentTypes[i].duration === 15) { %> selected <% } %>>15 minutes</option>
+                                        <option value="30" <% if(user.appointmentTypes[i].duration === 30) { %> selected <% } %>>30 minutes</option>
+                                        <option value="45" <% if(user.appointmentTypes[i].duration === 45) { %> selected <% } %>>45 minutes</option>
+                                        <option value="60" <% if(user.appointmentTypes[i].duration === 60) { %> selected <% } %>>1 hour</option>
+                                        <option value="90" <% if(user.appointmentTypes[i].duration === 90) { %> selected <% } %>>1 hour 30 minutes</option>
+                                        <option value="120" <% if(user.appointmentTypes[i].duration === 120) { %> selected <% } %>>2 hours</option>
+                                        <option value="0" <% if(user.appointmentTypes[i].duration === 0) { %> selected <% } %>>> 2 hours</option>
+                                    </select>
+                                </fieldset>
+                                <button type="submit" class="btn btn-primary">Edit Appointment Type</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
