@@ -21,9 +21,43 @@ router.get("/", async (req, res) => {
 //NEW
 router.get("/new", async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
+    let monday = 10
+    let tuesday = 10
+    let wednesday = 10
+    let thursday = 10
+    let friday = 10
+    let saturday = 10
+    if (serviceProvider.availableSunday === false) {
+        sunday = 0
+    }
+    if (serviceProvider.availableMonday === false) {
+        monday = 1
+    }
+    if (serviceProvider.availableTuesday === false) {
+        tuesday = 2
+    }
+    if (serviceProvider.availableWednesday === false) {
+        wednesday = 3
+    }
+    if (serviceProvider.availableThursday === false) {
+        thursday = 4
+    }
+    if (serviceProvider.availableFriday === false) {
+        friday = 5
+    }
+    if (serviceProvider.availableSaturday === false) {
+        saturday = 6
+    }
     res.render("newAppointment.ejs", {
         serviceProvider: serviceProvider,
         user: req.user,
+        sunday: sunday,
+        monday: monday,
+        tuesday: tuesday,
+        wednesday: wednesday,
+        thursday: thursday,
+        friday: friday,
+        saturday: saturday
     })
 })
 

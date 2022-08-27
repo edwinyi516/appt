@@ -25,12 +25,13 @@
             </div>
         </fieldset>
         <fieldset class="availability-time" id="availability-time">
-            <label class="form-check-label" for="availabilityTime">Choose a date:</label>
+            <label class="form-check-label" for="availabilityTime">Choose a time:</label>
             <div class="availability-block" id="availability-block">
                 <input class="form-control current-availability-time" name="chosenTime" id="chosenTime" value="">
             </div>
         </fieldset>
         <input id="submit-button" type="submit" value="Book Appointment">
+
     <script>
         //DOM
         let chosenAppointmentType = document.querySelector("#chosenAppointmentType")
@@ -38,10 +39,13 @@
         let appointmentTypeTitle = document.querySelector("#appointment-type-title")
         let availabilityDate = document.querySelector("#availability-date")
         let chosenDate = document.querySelector("#chosenDate")
+        let availabilityTime = document.querySelector("#availability-time")
+        let chosenTime = document.querySelector("#chosenTime")
         let submitButton = document.querySelector("#submit-button")
 
         //Default Styles
         availabilityDate.style.display = "none"
+        availabilityTime.style.display = "none"
         submitButton.style.display ="none"
 
         //Event Listeners
@@ -55,6 +59,11 @@
         })
         availabilityDate.addEventListener("change", () => {
             if (chosenDate !== "") {
+                availabilityTime.style.display = "block"
+            }
+        })
+        availabilityTime.addEventListener("change", () => {
+            if (chosenTime !== "") {
                 submitButton.style.display = "block"
             }
         })
@@ -66,7 +75,7 @@
             dateFormat: "m-d-Y",
             "disable": [
                 (date) => {
-                    return (date.getDay() === 0 || date.getDay() === 6);
+                    return (date.getDay() === <%= sunday %> || date.getDay() === <%= monday %> || date.getDay() === <%= tuesday %> || date.getDay() === <%= wednesday %> || date.getDay() === <%= thursday %> || date.getDay() === <%= friday %> || date.getDay() === <%= saturday %>);
                 }
             ]
         })
