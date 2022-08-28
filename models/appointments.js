@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const appointmentSchema = new mongoose.Schema({
     chosenAppointmentTypeDuration: { type: String, required: true },
-    chosenDate: { type: String, required: true },
+    chosenDate: { type: Date, required: true },
     chosenTime: { type: String, required: true },
     serviceprovider: { type: String, required: true },
     customer: { type: String, required: true }

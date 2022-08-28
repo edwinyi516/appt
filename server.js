@@ -28,6 +28,7 @@ const db = mongoose.connection
 db.once("open", () => {
     console.log(`MongoDB connected at ${db.host}:${db.port}`)
 })
+const Appointment = require("./models/appointments.js")
 
 /*========================================*/
 
@@ -78,9 +79,16 @@ app.get("/", (req, res) => {
 })
 
 //Dashboard
-app.get("/dashboard", ensureAuthenticated, (req, res) => {
+app.get("/dashboard", ensureAuthenticated, async (req, res) => {
+    let today = new Date();
+    let todaysAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: today })
+    let upcomingAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: { $gte: today } })
+    let pastAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: { $lte: today } })
     res.render("dashboard.ejs", {
-        user: req.user
+        user: req.user,
+        todaysAppointments: todaysAppointments,
+        upcomingAppointments: upcomingAppointments,
+        pastAppointments: pastAppointments
     })
 })
 
