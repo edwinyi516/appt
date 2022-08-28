@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("./partials/style.ejs") %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.13.18/jquery.timepicker.css">
     <title>New Appointment - Appt</title>
 </head>
 <%- include("./partials/navbar.ejs", {user: user}) %>
@@ -15,7 +16,7 @@
         <select name="chosenAppointmentType" id="chosenAppointmentType" form="new-appointment-form">
             <option id="select-one" value="" disabled selected>Select One</option>
             <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
-            <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].title %>"><%= serviceProvider.appointmentTypes[i].title %></option>
+            <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
             <% } %>
         </select>
         <fieldset class="availability-date" id="availability-date">
@@ -27,10 +28,11 @@
         <fieldset class="availability-time" id="availability-time">
             <label class="form-check-label" for="availabilityTime">Choose a time:</label>
             <div class="availability-block" id="availability-block">
-                <input class="form-control current-availability-time" name="chosenTime" id="chosenTime" value="">
+                <input id="chosenTime" type="text">
             </div>
         </fieldset>
         <input id="submit-button" type="submit" value="Book Appointment">
+
 
     <script>
         //DOM
@@ -43,49 +45,47 @@
         let chosenTime = document.querySelector("#chosenTime")
         let submitButton = document.querySelector("#submit-button")
 
-        //Default Styles
-        availabilityDate.style.display = "none"
-        availabilityTime.style.display = "none"
-        submitButton.style.display ="none"
+        // //Default Values
+        // availabilityDate.style.display = "none"
+        // availabilityTime.style.display = "none"
+        // submitButton.style.display ="none"
 
-        //Event Listeners
-        chosenAppointmentType.addEventListener("change", () => {
-            if (selectOne.selected === true) {
-                availabilityDate.style.display = "none"
-            }
-            else {
-                availabilityDate.style.display = "block"
-            }
-        })
-        availabilityDate.addEventListener("change", () => {
-            if (chosenDate !== "") {
-                availabilityTime.style.display = "block"
-            }
-        })
-        availabilityTime.addEventListener("change", () => {
-            if (chosenTime !== "") {
-                submitButton.style.display = "block"
-            }
-        })
+        // //Event Listeners
+        // chosenAppointmentType.addEventListener("change", () => {
+        //     if (selectOne.selected === true) {
+        //         availabilityDate.style.display = "none"
+        //     }
+        //     else {
+        //         availabilityDate.style.display = "block"
+        //     }
+        // })
+        // availabilityDate.addEventListener("change", () => {
+        //     if (chosenDate !== "") {
+        //         availabilityTime.style.display = "block"
+        //     }
+        // })
+        // chosenTime.addEventListener("change", () => {
+        //     if (chosenTime !== "") {
+        //         submitButton.style.display = "block"
+        //     }
+        // })
 
-        //Flatpickr Configuration
         flatpickr(".current-availability-date", {
             minDate: "today",
             maxDate: new Date().fp_incr(28),
             dateFormat: "m-d-Y",
             "disable": [
                 (date) => {
-                    return (date.getDay() === <%= sunday %> || date.getDay() === <%= monday %> || date.getDay() === <%= tuesday %> || date.getDay() === <%= wednesday %> || date.getDay() === <%= thursday %> || date.getDay() === <%= friday %> || date.getDay() === <%= saturday %>);
+                    return (date.getDay() === <%= sunday %> || date.getDay() === <%= monday %> || date.getDay() === <%= tuesday %> || date.getDay() === <%= wednesday %> || date.getDay() === <%= thursday %> || date.getDay() === <%= friday %> || date.getDay() === <%= saturday %>)
                 }
             ]
         })
-        flatpickr(".current-availability-time", {
-            enableTime: true,
-            noCalendar: true,
-            time_24hr: false,
-            dateFormat: "h:i K",
-            minuteIncrement: 15
-        })
+
+        $(document).ready(function() {
+            $('#chosenTime').timepicker();
+        });
+
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.18/jquery.timepicker.min.js"></script>
 </body>
 </html>

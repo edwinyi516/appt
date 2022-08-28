@@ -5,7 +5,6 @@ const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
 const flatpickr = require("flatpickr")
 
-
 //INDEX
 router.get("/", async (req, res) => {
     // let customer = await Customer.findById(req.params.id)

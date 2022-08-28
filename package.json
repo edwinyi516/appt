@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "appointment-picker": "^2.0.0",
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.2.0",
     "connect-flash": "^0.1.1",
@@ -22,6 +23,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.5.2",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "timepicker": "^1.13.18"
   }
 }
