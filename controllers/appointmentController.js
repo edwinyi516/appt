@@ -73,21 +73,20 @@ router.get("/:id", async (req, res) => {
 //CREATE
 router.post("/new", (req, res) => {
     Appointment.create(req.body, (err, createdAppointment) => {
-        if(err) {
-            console.log("error", err)
-            res.send(err)
-        }
-        else {
-            req.flash("success_msg", "Your new appointment has been booked!")
+        if (err) {
+			console.log('error', err);
+			res.send(err);
+		} else {
+            req.flash("success_msg", "Your appointment has been booked!")
             res.redirect("/dashboard")
-        }
+		}
     })
 })
 
 //DESTROY
 router.delete("/:id", (req, res) => {
     Appointment.findByIdAndRemove(req.params.id, (err, data) => {
-        res.redirect("/appointments")
+        res.redirect("/dashboard")
     })
 })
 

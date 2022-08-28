@@ -67,6 +67,8 @@ const serviceproviderController = require("./controllers/serviceproviderControll
 app.use("/sp", serviceproviderController)
 const customerController = require("./controllers/customerController.js")
 app.use("/customer", customerController)
+const appointmentsController = require("./controllers/appointmentController.js")
+app.use("/appointments", appointmentsController)
 
 //Home Page
 app.get("/", (req, res) => {

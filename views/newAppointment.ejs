@@ -11,9 +11,9 @@
 <%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
     <h1>Book an Appointment with <%= serviceProvider.company %></h1>
-    <form name="new-appointment-form" id="new-appointment-form" action="sp/<%= serviceProvider.id %>/appointments/new" method="POST">
-        <label for="chosenAppointmentType">Choose appointment type: </label>
-        <select name="chosenAppointmentType" id="chosenAppointmentType" form="new-appointment-form">
+    <form name="new-appointment-form" id="new-appointment-form" action="/appointments/new" method="POST">
+        <label for="chosenAppointmentTypeDuration">Choose appointment type: </label>
+        <select name="chosenAppointmentTypeDuration" id="chosenAppointmentTypeDuration" form="new-appointment-form">
             <option id="select-one" value="" disabled selected>Select One</option>
             <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
             <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
@@ -28,17 +28,18 @@
         <fieldset class="availability-time" id="availability-time">
             <label class="form-check-label" for="availabilityTime">Choose a time:</label>
             <div class="availability-block" id="availability-block">
-                <input id="chosenTime" type="text">
+                <input id="chosenTime" type="text" name="chosenTime" value="">
             </div>
         </fieldset>
         <input name="customer" value="<%= user.id %>" hidden>
         <input name="serviceprovider" value="<%= serviceProvider.id %>" hidden>
         <input id="submit-button" type="submit" value="Book Appointment">
+    </form>
 
 
     <script>
         //DOM
-        let chosenAppointmentType = document.querySelector("#chosenAppointmentType")
+        let chosenAppointmentTypeDuration = document.querySelector("#chosenAppointmentTypeDuration")
         let selectOne = document.querySelector("#select-one")
         let appointmentTypeTitle = document.querySelector("#appointment-type-title")
         let availabilityDate = document.querySelector("#availability-date")
@@ -53,7 +54,7 @@
         submitButton.style.display ="none"
 
         //Event Listeners
-        chosenAppointmentType.addEventListener("change", () => {
+        chosenAppointmentTypeDuration.addEventListener("change", () => {
             if (selectOne.selected === true) {
                 availabilityDate.style.display = "none"
             }
@@ -87,8 +88,8 @@
             $('#chosenTime').timepicker({});
         });
         
-        $(document.body).on('change', '#chosenAppointmentType', function() {
-            let duration = $('#chosenAppointmentType').find(":selected").val();
+        $(document.body).on('change', '#chosenAppointmentTypeDuration', function() {
+            let duration = $('#chosenAppointmentTypeDuration').find(":selected").val();
             $('#chosenTime').timepicker('option', 'step', duration)
         })
 

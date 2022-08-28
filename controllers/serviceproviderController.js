@@ -1,9 +1,9 @@
 const express = require("express")
+const app = express()
 const router = express.Router({ mergeParams: true })
 const ServiceProvider = require("../models/serviceproviders.js")
 
 const Appointment = require("../models/appointments")
-const appointmentController = require("../controllers/appointmentController.js")
 
 const { ensureAuthenticated } = require("../config/auth.js")
 
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
     })
 })
 
-//POST NEW APPOINTMENT TYPE
+//ADD NEW APPOINTMENT TYPE
 router.put("/newappointmenttype", ensureAuthenticated, (req, res) => {
     let newAppointmentType = { "title": req.body.appointmentTypeTitle, "description": req.body.appointmentTypeDescription, "duration": req.body.appointmentTypeDuration }
     ServiceProvider.findByIdAndUpdate(req.user.id, { $push: { appointmentTypes: newAppointmentType } }, () => {
@@ -35,11 +35,13 @@ router.delete("/deleteAppointmentType/:id", ensureAuthenticated, (req, res) => {
 })
 
 //RE-ROUTE TO APPOINTMENT CONTROLLER
-router.use("/:id/appointments", appointmentController, (req, res) => {
-    Appointment.findById(req.params.id, () => {
-        res.send("Appointments page")
-    })
-})
+const appointmentController = require("../controllers/appointmentController.js")
+router.use("/:id/appointments", appointmentController)
+// router.use("/:id/appointments", appointmentController, (req, res) => {
+//     Appointment.findById(req.params.id, () => {
+//         res.send("Appointments page")
+//     })
+// })
 
 //SHOW
 router.get("/:id", async (req, res) => {
