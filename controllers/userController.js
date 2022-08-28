@@ -284,7 +284,7 @@ router.get("/signin", (req, res) => {
 //POST SIGN IN
 router.post("/signin", (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/dashboard",
+        successRedirect: req.session.returnTo || '/dashboard',
         failureRedirect: "/users/signin",
         failureFlash: true
     })(req, res, next)

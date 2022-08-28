@@ -4,6 +4,7 @@ const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
 const flatpickr = require("flatpickr")
+const { ensureAuthenticated } = require("../config/auth.js")
 
 //INDEX
 router.get("/", async (req, res) => {
@@ -18,7 +19,7 @@ router.get("/", async (req, res) => {
 })
 
 //NEW
-router.get("/new", async (req, res) => {
+router.get("/new", ensureAuthenticated, async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
     let monday = 10
     let tuesday = 10
@@ -48,6 +49,7 @@ router.get("/new", async (req, res) => {
         saturday = 6
     }
     res.render("newAppointment.ejs", {
+        user: req.user,
         serviceProvider: serviceProvider,
         user: req.user,
         sunday: sunday,
@@ -69,14 +71,15 @@ router.get("/:id", async (req, res) => {
 })
 
 //CREATE
-router.post("/", (req, res) => {
+router.post("/new", (req, res) => {
     Appointment.create(req.body, (err, createdAppointment) => {
         if(err) {
             console.log("error", err)
             res.send(err)
         }
         else {
-            res.redirect(`/sp/${req.params.id}/appointments`)
+            req.flash("success_msg", "Your new appointment has been booked!")
+            res.redirect("/dashboard")
         }
     })
 })

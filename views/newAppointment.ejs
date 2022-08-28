@@ -11,7 +11,7 @@
 <%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
     <h1>Book an Appointment with <%= serviceProvider.company %></h1>
-    <form name="new-appointment-form" id="new-appointment-form" action="WHOOOOOO" method="POST">
+    <form name="new-appointment-form" id="new-appointment-form" action="sp/<%= serviceProvider.id %>/appointments/new" method="POST">
         <label for="chosenAppointmentType">Choose appointment type: </label>
         <select name="chosenAppointmentType" id="chosenAppointmentType" form="new-appointment-form">
             <option id="select-one" value="" disabled selected>Select One</option>
@@ -31,6 +31,8 @@
                 <input id="chosenTime" type="text">
             </div>
         </fieldset>
+        <input name="customer" value="<%= user.id %>" hidden>
+        <input name="serviceprovider" value="<%= serviceProvider.id %>" hidden>
         <input id="submit-button" type="submit" value="Book Appointment">
 
 
@@ -84,7 +86,7 @@
         $(document).ready(function() {
             $('#chosenTime').timepicker({});
         });
-
+        
         $(document.body).on('change', '#chosenAppointmentType', function() {
             let duration = $('#chosenAppointmentType').find(":selected").val();
             $('#chosenTime').timepicker('option', 'step', duration)
