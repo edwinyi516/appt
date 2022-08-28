@@ -45,30 +45,30 @@
         let chosenTime = document.querySelector("#chosenTime")
         let submitButton = document.querySelector("#submit-button")
 
-        // //Default Values
-        // availabilityDate.style.display = "none"
-        // availabilityTime.style.display = "none"
-        // submitButton.style.display ="none"
+        //Default Values
+        availabilityDate.style.display = "none"
+        availabilityTime.style.display = "none"
+        submitButton.style.display ="none"
 
-        // //Event Listeners
-        // chosenAppointmentType.addEventListener("change", () => {
-        //     if (selectOne.selected === true) {
-        //         availabilityDate.style.display = "none"
-        //     }
-        //     else {
-        //         availabilityDate.style.display = "block"
-        //     }
-        // })
-        // availabilityDate.addEventListener("change", () => {
-        //     if (chosenDate !== "") {
-        //         availabilityTime.style.display = "block"
-        //     }
-        // })
-        // chosenTime.addEventListener("change", () => {
-        //     if (chosenTime !== "") {
-        //         submitButton.style.display = "block"
-        //     }
-        // })
+        //Event Listeners
+        chosenAppointmentType.addEventListener("change", () => {
+            if (selectOne.selected === true) {
+                availabilityDate.style.display = "none"
+            }
+            else {
+                availabilityDate.style.display = "block"
+            }
+        })
+        availabilityDate.addEventListener("change", () => {
+            if (chosenDate !== "") {
+                availabilityTime.style.display = "block"
+            }
+        })
+        chosenTime.addEventListener("change", () => {
+            if (chosenTime !== "") {
+                submitButton.style.display = "block"
+            }
+        })
 
         flatpickr(".current-availability-date", {
             minDate: "today",
@@ -82,8 +82,13 @@
         })
 
         $(document).ready(function() {
-            $('#chosenTime').timepicker();
+            $('#chosenTime').timepicker({});
         });
+
+        $(document.body).on('change', '#chosenAppointmentType', function() {
+            let duration = $('#chosenAppointmentType').find(":selected").val();
+            $('#chosenTime').timepicker('option', 'step', duration)
+        })
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/timepicker@1.13.18/jquery.timepicker.min.js"></script>
