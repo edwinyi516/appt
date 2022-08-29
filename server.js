@@ -81,17 +81,18 @@ app.get("/", (req, res) => {
 //Dashboard
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {
     let today = new Date();
+    today = today.setHours(0, 0, 0, 0)
     let todaysAppointments = []
     let upcomingAppointments = []
     let pastAppointments = []
     if (req.user.usertype === "serviceprovider") {
-        todaysAppointments = await Appointment.find({ $or: [ { serviceprovider: `${req.user.id}` }, { customer: `${req.user.id}` }, { chosenDate: today } ] })
-        upcomingAppointments = await Appointment.find({ $or: [ { serviceprovider: `${req.user.id}` }, { customer: `${req.user.id}` }, { chosenDate: { $gt: today } } ] })
-        pastAppointments = await Appointment.find({ $or: [ { serviceprovider: `${req.user.id}` }, { customer: `${req.user.id}` }, { chosenDate: { $lt: today } } ] })
+        todaysAppointments = await Appointment.find({ $and: [ { $or: [ { serviceprovider: `${req.user.id}` }, { customer: `${req.user.id}` } ] }, { chosenDate: today } ] })
+        upcomingAppointments = await Appointment.find({ $and: [ { $or: [ { serviceprovider: `${req.user.id}` }, { customer: `${req.user.id}` } ] }, { chosenDate: { $gt: today } } ] })
+        pastAppointments = await Appointment.find({ $and: [ { $or: [ { serviceprovider: `${req.user.id}` }, { customer: `${req.user.id}` } ] }, { chosenDate: { $lt: today } } ] })
     }
     else {
         todaysAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: today })
-        upcomingAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: { $gte: today } })
+        upcomingAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: { $gt: today } })
         pastAppointments = await Appointment.find({ customer: `${req.user.id}`, chosenDate: { $lte: today } })
     }
     todaysAppointments = todaysAppointments.sort((a, b) => {

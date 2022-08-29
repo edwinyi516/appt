@@ -1,0 +1,45 @@
+<h3>Today's Appointments</h3>
+<% if (todaysAppointments.length === 0) { %>
+    <p>No appointments today!</p>
+<% } else { %>
+<div id="todays-appointments-card-div">
+    <% for (i = 0; i < todaysAppointments.length; i++) { %>
+    <div class="card mx-4" id="todays-appointments-card">
+        <div class="card-body">
+            <h5 class="card-title"><%= todaysAppointments[i].chosenAppointmentType %></h5>
+            <% if (user.usertype === "serviceprovider") { %>
+            <p class="card-text">with <%= todaysAppointments[i].customerName %></p>
+            <% } else { %>
+            <p class="card-text">with <%= todaysAppointments[i].serviceproviderName %></p>
+            <% } %>
+            <p class="card-text"><%= todaysAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= todaysAppointments[i].chosenTime %></p>
+            <form action="/WHOOOOOOOOO?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <% } %>
+</div>
+<% } %>
+
+<br><br>
+
+<h4>Upcoming Appointments</h4>
+<div id="upcoming-appointments-card-div">
+    <% for (i = 0; i < upcomingAppointments.length; i++) { %>
+    <div class="card mx-4" id="upcoming-appointments-card">
+        <div class="card-body">
+            <h5 class="card-title"><%= upcomingAppointments[i].chosenAppointmentType %></h5>
+            <% if (user.usertype === "serviceprovider") { %>
+            <p class="card-text">with <%= upcomingAppointments[i].customerName %></p>
+            <% } else { %>
+            <p class="card-text">with <%= upcomingAppointments[i].serviceproviderName %></p>
+            <% } %>
+            <p class="card-text"><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %></p>
+            <form action="/WHOOOOOOOOO?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+    <% } %>
+</div>

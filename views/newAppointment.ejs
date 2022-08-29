@@ -33,7 +33,9 @@
             </div>
         </fieldset>
         <input name="customer" value="<%= user.id %>" hidden>
+        <input name="customerName" value="<%= user.firstName %> <%= user.lastName %>" hidden>
         <input name="serviceprovider" value="<%= serviceProvider.id %>" hidden>
+        <input name="serviceproviderName" value="<%= serviceProvider.company %>" hidden>
         <input id="bookedAppointmentsArray" value="<%= bookedAppointmentsArray %>" hidden>
         <input id="submit-button" type="submit" value="Book Appointment">
     </form>

@@ -16,7 +16,7 @@
     <%- include("./partials/messages.ejs") %>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="upcoming-appointments-tab" data-toggle="tab" href="#upcoming-appointments" role="tab" aria-controls="upcoming-appointments" aria-selected="true">Upcoming Appointments</a>
+            <a class="nav-link active" id="my-appointments-tab" data-toggle="tab" href="#my-appointments" role="tab" aria-controls="my-appointments" aria-selected="true">My Appointments</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="past-appointments" aria-selected="false">Past Appointments</a>
@@ -34,8 +34,8 @@
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="upcoming-appointments" role="tabpanel" aria-labelledby="upcoming-appointments-tab">
-            <%- include("./partials/dashboard/upcoming.ejs", {user: user}) %>
+        <div class="tab-pane fade show active" id="my-appointments" role="tabpanel" aria-labelledby="my-appointments-tab">
+            <%- include("./partials/dashboard/myAppointments.ejs", {user: user}) %>
         </div>
         <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="past-appointments-tab">
             <%- include("./partials/dashboard/past.ejs", {user: user}) %>

@@ -6,7 +6,9 @@ const appointmentSchema = new mongoose.Schema({
     chosenDate: { type: Date, required: true },
     chosenTime: { type: String, required: true },
     serviceprovider: { type: String, required: true },
-    customer: { type: String, required: true }
+    serviceproviderName: { type: String, required: true },
+    customer: { type: String, required: true },
+    customerName: { type: String, required: true }
 })
 
 const Appointment = mongoose.model("Appointment", appointmentSchema)
