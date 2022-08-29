@@ -19,6 +19,7 @@
             <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
             <% } %>
         </select>
+        <input id="chosenAppointmentType" name="chosenAppointmentType" type="text" hidden>
         <fieldset class="availability-date" id="availability-date">
             <label class="form-check-label" for="availableSaturday">Choose a date:</label>
             <div class="availability-block" id="availability-block">
@@ -33,6 +34,7 @@
         </fieldset>
         <input name="customer" value="<%= user.id %>" hidden>
         <input name="serviceprovider" value="<%= serviceProvider.id %>" hidden>
+        <input id="bookedAppointmentsArray" value="<%= bookedAppointmentsArray %>" hidden>
         <input id="submit-button" type="submit" value="Book Appointment">
     </form>
 
@@ -40,6 +42,7 @@
     <script>
         //DOM
         let chosenAppointmentTypeDuration = document.querySelector("#chosenAppointmentTypeDuration")
+        let chosenAppointmentType = document.querySelector("#chosenAppointmentType")
         let selectOne = document.querySelector("#select-one")
         let appointmentTypeTitle = document.querySelector("#appointment-type-title")
         let availabilityDate = document.querySelector("#availability-date")
@@ -47,6 +50,7 @@
         let availabilityTime = document.querySelector("#availability-time")
         let chosenTime = document.querySelector("#chosenTime")
         let submitButton = document.querySelector("#submit-button")
+        let bookedAppointmentsArray = document.querySelector("#bookedAppointmentsArray")
 
         //Default Values
         availabilityDate.style.display = "none"
@@ -55,6 +59,7 @@
 
         //Event Listeners
         chosenAppointmentTypeDuration.addEventListener("change", () => {
+            chosenAppointmentType.value = chosenAppointmentTypeDuration.options[chosenAppointmentTypeDuration.selectedIndex].textContent
             if (selectOne.selected === true) {
                 availabilityDate.style.display = "none"
             }
@@ -85,7 +90,10 @@
         })
 
         $(document).ready(function() {
-            $('#chosenTime').timepicker({});
+            $('#chosenTime').timepicker({
+                disableTextInput: true,
+                disableTimeRanges: [["12am","8am"], ["4pm", "11:59pm"]]
+            });
         });
         
         $(document.body).on('change', '#chosenAppointmentTypeDuration', function() {

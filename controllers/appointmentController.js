@@ -21,6 +21,35 @@ router.get("/", async (req, res) => {
 //NEW
 router.get("/new", ensureAuthenticated, async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
+
+    let bookedAppointmentsArray = []
+    let afterTime = ""
+    let bookedAppointments = await Appointment.find({ serviceProvider: `${req.params.id}` })
+    for (i = 0; i < bookedAppointments.length; i++) {
+        let newTest = bookedAppointments[i].chosenTime
+        if (bookedAppointments[i].chosenTime.length === 6 && bookedAppointments[i].chosenTime[3] === "0") {
+            newTest = bookedAppointments[i].chosenTime.split('')
+            newTest[3] = "1"
+            afterTime = newTest.join('')
+        }
+        else if (bookedAppointments[i].chosenTime.length === 6 && bookedAppointments[i].chosenTime[3] === "5") {
+            newTest = bookedAppointments[i].chosenTime.split('')
+            newTest[3] = "6"
+            afterTime = newTest.join('')
+        } 
+        else if (bookedAppointments[i].chosenTime.length === 7 && bookedAppointments[i].chosenTime[4] === "0") {
+            newTest = bookedAppointments[i].chosenTime.split('')
+            newTest[4] = "1"
+            afterTime = newTest.join('')
+        } 
+        else if (bookedAppointments[i].chosenTime.length === 7 && bookedAppointments[i].chosenTime[4] === "5") {
+            newTest = bookedAppointments[i].chosenTime.split('')
+            newTest[4] = "6"
+            afterTime = newTest.join('')
+        }
+        bookedAppointmentsArray.push([bookedAppointments[i].chosenTime, afterTime]);
+    }
+
     let monday = 10
     let tuesday = 10
     let wednesday = 10
@@ -51,7 +80,7 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
     res.render("newAppointment.ejs", {
         user: req.user,
         serviceProvider: serviceProvider,
-        user: req.user,
+        bookedAppointmentsArray: bookedAppointmentsArray,
         sunday: sunday,
         monday: monday,
         tuesday: tuesday,
