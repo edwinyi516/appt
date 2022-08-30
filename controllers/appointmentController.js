@@ -3,25 +3,12 @@ const router = express.Router({ mergeParams: true })
 const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
-const flatpickr = require("flatpickr")
 const { ensureAuthenticated } = require("../config/auth.js")
 
-//INDEX
-router.get("/", async (req, res) => {
-    // let customer = await Customer.findById(req.params.id)
-    let appointments = await Appointment.find({ serviceprovider: `${req.params.id}` })
-    let serviceProvider = await ServiceProvider.findById(req.params.id)
-    res.render("indexA_SP.ejs", {
-        serviceProvider: serviceProvider,
-        user: req.user,
-        appointments: appointments
-    })
-})
 
 //NEW
 router.get("/new", ensureAuthenticated, async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
-
     let bookedAppointmentsArray = []
     let joinedTime = ""
     let bookedAppointments = await Appointment.find({ serviceProvider: `${req.params.id}` })
@@ -49,7 +36,6 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
         }
         bookedAppointmentsArray.push([bookedAppointments[i].chosenTime, joinedTime]);
     }
-
     let monday = 10
     let tuesday = 10
     let wednesday = 10
@@ -88,14 +74,6 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
         thursday: thursday,
         friday: friday,
         saturday: saturday
-    })
-})
-
-//SHOW
-router.get("/:id", async (req, res) => {
-    let appointment = await Appointment.findById(req.params.id)
-    res.render("showA.ejs", {
-        appointment: appointment
     })
 })
 

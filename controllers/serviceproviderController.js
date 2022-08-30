@@ -1,10 +1,7 @@
 const express = require("express")
-const app = express()
 const router = express.Router({ mergeParams: true })
 const ServiceProvider = require("../models/serviceproviders.js")
-
 const Appointment = require("../models/appointments")
-
 const { ensureAuthenticated } = require("../config/auth.js")
 
 
@@ -40,19 +37,6 @@ router.delete("/deleteAppointmentType/:id", ensureAuthenticated, (req, res) => {
 //RE-ROUTE TO APPOINTMENT CONTROLLER
 const appointmentController = require("../controllers/appointmentController.js")
 router.use("/:id/appointments", appointmentController)
-// router.use("/:id/appointments", appointmentController, (req, res) => {
-//     Appointment.findById(req.params.id, () => {
-//         res.send("Appointments page")
-//     })
-// })
-
-//SHOW
-router.get("/:id", async (req, res) => {
-    let serviceProvider = await ServiceProvider.findById(req.params.id) 
-    res.render("showSP.ejs", {
-        serviceProvider: serviceProvider
-    })
-})
 
 //UPDATE
 router.put("/updateavailability", (req, res) => {

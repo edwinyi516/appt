@@ -41,31 +41,29 @@
     </div>
 </div>
 
-
-    <div id="appointment-types-card-div">
-        <% for (i = 0; i < user.appointmentTypes.length; i++) { %>
-        <div class="card mx-4" id="appointment-type-card">
-            <div class="card-body">
-                <h5 class="card-title"><%= user.appointmentTypes[i].title %></h5>
-                <p class="card-text"><%= user.appointmentTypes[i].description %></p>
-                <p class="card-text">Duration: 
-                    <% if (user.appointmentTypes[i].duration <= 45) { %>
-                        <%= user.appointmentTypes[i].duration %> minutes
-                    <% } else if (user.appointmentTypes[i].duration === 60) { %>
-                        1 hour
-                    <% } else if (user.appointmentTypes[i].duration === 90) { %>
-                        1 hour 30 minutes
-                    <% } else if (user.appointmentTypes[i].duration === 120) { %>
-                        2 hours
-                    <% } else if (user.appointmentTypes[i].duration === 0) { %>
-                        > 2 hours
-                    <% } %>
-                    </p>
-                <form action="/sp/deleteAppointmentType/<%= user.appointmentTypes[i].id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </div>
+<div id="appointment-types-card-div">
+    <% for (i = 0; i < user.appointmentTypes.length; i++) { %>
+    <div class="card mx-4" id="appointment-type-card">
+        <div class="card-body">
+            <h5 class="card-title"><%= user.appointmentTypes[i].title %></h5>
+            <p class="card-text"><%= user.appointmentTypes[i].description %></p>
+            <p class="card-text">Duration: 
+                <% if (user.appointmentTypes[i].duration <= 45) { %>
+                    <%= user.appointmentTypes[i].duration %> minutes
+                <% } else if (user.appointmentTypes[i].duration === 60) { %>
+                    1 hour
+                <% } else if (user.appointmentTypes[i].duration === 90) { %>
+                    1 hour 30 minutes
+                <% } else if (user.appointmentTypes[i].duration === 120) { %>
+                    2 hours
+                <% } else if (user.appointmentTypes[i].duration === 0) { %>
+                    > 2 hours
+                <% } %>
+                </p>
+            <form action="/sp/deleteAppointmentType/<%= user.appointmentTypes[i].id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
         </div>
-        <% } %>
     </div>
+    <% } %>
 </div>

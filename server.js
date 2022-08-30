@@ -66,12 +66,10 @@ const userController = require("./controllers/userController.js")
 app.use("/users", userController)
 const serviceproviderController = require("./controllers/serviceproviderController.js")
 app.use("/sp", serviceproviderController)
-const customerController = require("./controllers/customerController.js")
-app.use("/customer", customerController)
 const appointmentsController = require("./controllers/appointmentController.js")
 app.use("/appointments", appointmentsController)
 
-//Home Page
+//Landing Page
 app.get("/", (req, res) => {
     res.render("homepage.ejs", {
         user: req.user

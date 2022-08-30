@@ -16,7 +16,7 @@ router.get("/register/newcustomer", (req, res) => {
 
 //POST NEW CUSTOMER
 router.post("/register/newcustomer", (req, res) => {
-    const { firstName, lastName, phone, email, password, password2 } = req.body
+    const { firstName, lastName, phone, email, password, password2, img } = req.body
     let errors = []
     //Check required fields
     if(!firstName || !lastName || !phone || !email || !password || !password2) {
@@ -39,7 +39,8 @@ router.post("/register/newcustomer", (req, res) => {
             email,
             phone,
             password,
-            password2
+            password2,
+            img
         })
     }
     else {
@@ -55,7 +56,8 @@ router.post("/register/newcustomer", (req, res) => {
                         email,
                         phone,
                         password,
-                        password2
+                        password2,
+                        img
                     })
                 }
                 else {
@@ -64,7 +66,8 @@ router.post("/register/newcustomer", (req, res) => {
                         lastName,
                         email,
                         phone,
-                        password
+                        password,
+                        img
                     })
                     //Hash password
                     bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newCustomer.password, salt, (err, hash) => {
@@ -91,11 +94,11 @@ router.get("/register/newserviceprovider", (req, res) => {
 
 //POST NEW SERVICE PROVIDER
 router.post("/register/newserviceprovider", (req, res) => {
-    const { firstName, lastName, company, description, phone, email, password, password2 } = req.body
+    const { firstName, lastName, company, description, phone, email, password, password2, img } = req.body
     let errors = []
     //Check required fields
     if(!firstName || !lastName || !company || !description || !phone || !email || !password || !password2) {
-        errors.push({ msg: "Please fill in all fields" })
+        errors.push({ msg: "Please fill in all required fields" })
     }
     //Check passwords match
     if(password !== password2) {
@@ -116,7 +119,8 @@ router.post("/register/newserviceprovider", (req, res) => {
             email,
             phone,
             password,
-            password2
+            password2,
+            img
         })
     }
     else {
@@ -134,7 +138,8 @@ router.post("/register/newserviceprovider", (req, res) => {
                         email,
                         phone,
                         password,
-                        password2
+                        password2,
+                        img
                     })
                 }
                 else {
@@ -145,7 +150,8 @@ router.post("/register/newserviceprovider", (req, res) => {
                         description,
                         email,
                         phone,
-                        password
+                        password,
+                        img
                     })
                     //Hash password
                     bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newServiceProvider.password, salt, (err, hash) => {
@@ -289,7 +295,7 @@ router.get("/signin", (req, res) => {
 //POST SIGN IN
 router.post("/signin", (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: req.session.returnTo || '/dashboard',
+        successRedirect: req.session.returnTo || "/dashboard",
         failureRedirect: "/users/signin",
         failureFlash: true
     })(req, res, next)
