@@ -90,9 +90,10 @@ router.post("/new", (req, res) => {
     })
 })
 
-//DESTROY
-router.delete("/:id", (req, res) => {
+//DESTROY (CANCEL)
+router.delete("/:id/cancel", (req, res) => {
     Appointment.findByIdAndRemove(req.params.id, (err, data) => {
+        req.flash("success_msg", "Your appointment has been cancelled")
         res.redirect("/dashboard")
     })
 })

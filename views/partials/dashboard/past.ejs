@@ -12,9 +12,6 @@
             <p class="card-text">with <%= pastAppointments[i].serviceproviderName %></p>
             <% } %>
             <p class="card-text"><%= pastAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= pastAppointments[i].chosenTime %></p>
-            <form action="/WHOOOOOOOOO?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
         </div>
     </div>
     <% } %>
