@@ -91,10 +91,10 @@ router.get("/register/newserviceprovider", (req, res) => {
 
 //POST NEW SERVICE PROVIDER
 router.post("/register/newserviceprovider", (req, res) => {
-    const { firstName, lastName, company, phone, email, password, password2 } = req.body
+    const { firstName, lastName, company, description, phone, email, password, password2 } = req.body
     let errors = []
     //Check required fields
-    if(!firstName || !lastName || !company || !phone || !email || !password || !password2) {
+    if(!firstName || !lastName || !company || !description || !phone || !email || !password || !password2) {
         errors.push({ msg: "Please fill in all fields" })
     }
     //Check passwords match
@@ -112,6 +112,7 @@ router.post("/register/newserviceprovider", (req, res) => {
             firstName,
             lastName,
             company,
+            description,
             email,
             phone,
             password,
@@ -129,6 +130,7 @@ router.post("/register/newserviceprovider", (req, res) => {
                         firstName,
                         lastName,
                         company,
+                        description,
                         email,
                         phone,
                         password,
@@ -140,6 +142,7 @@ router.post("/register/newserviceprovider", (req, res) => {
                         firstName,
                         lastName,
                         company,
+                        description,
                         email,
                         phone,
                         password
@@ -177,10 +180,10 @@ router.get("/editprofile", ensureAuthenticated, (req, res) => {
 //UPDATE USER
 router.put("/:id", ensureAuthenticated, (req, res) => {
     if (req.user.usertype === "serviceprovider") {
-        const { firstName, lastName, company, phone, email } = req.body
+        const { firstName, lastName, company, description, phone, email } = req.body
         let errors = []
         //Check required fields
-        if(!firstName || !lastName || !company || !phone || !email) {
+        if(!firstName || !lastName || !company || !description || !phone || !email) {
             errors.push({ msg: "Please fill in all fields" })
         }
         if(errors.length > 0) {
@@ -190,6 +193,7 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
                 firstName,
                 lastName,
                 company,
+                description,
                 email,
                 phone
             })
@@ -205,12 +209,13 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
                             firstName,
                             lastName,
                             company,
+                            description,
                             email,
                             phone
                         })
                     }
                     else {
-                        ServiceProvider.findByIdAndUpdate(req.user.id, { $set: { firstName: firstName, lastName: lastName, company: company, email: email, phone: phone } }, () => {
+                        ServiceProvider.findByIdAndUpdate(req.user.id, { $set: { firstName: firstName, lastName: lastName, company: company, description: description, email: email, phone: phone } }, () => {
                             req.flash("success_msg", "Changes have been saved")
                             res.redirect(`/dashboard`)
                         })

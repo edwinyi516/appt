@@ -13,26 +13,31 @@
     <%- include("../partials/messages.ejs") %>
     <a href="/dashboard">Dashboard</a>
     <form action="/users/<%= user.id %>?_method=PUT" method="POST">
+        <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
         <fieldset>
-            <label for="firstName">First Name:</label>
+            <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
             <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
         </fieldset>
         <fieldset>
-            <label for="lastName">Last Name:</label>
+            <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
             <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
         </fieldset>
         <% if (user.usertype === "serviceprovider") { %>
         <fieldset>
-            <label for="company">Company:</label>
+            <label for="company">Company<span style="color: red">*</span>&nbsp;</label>
             <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= user.company %>">
+        </fieldset>
+        <fieldset>
+            <label for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
+            <input id="description" type="text" autocomplete="off" spellcheck="false" name="description" placeholder="Description" value="<%= user.description %>">
         </fieldset>
         <% } %>
         <fieldset>
-            <label for="email">Email:</label>
+            <label for="email">Email<span style="color: red">*</span>&nbsp;</label>
             <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= user.email %>">
         </fieldset>
         <fieldset>
-            <label for="phone">Phone Number:</label>
+            <label for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
             <input id="phone" type="tel" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= user.phone %>">
         </fieldset>
         <input type="submit" value="Save Changes">

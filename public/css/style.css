@@ -144,7 +144,7 @@ nav {
     width: 50%;
     min-width: 575px;
     padding: 60px 80px 70px 100px;
-    font-size: 18px;
+    font-size: 17px;
     font-family: "Raleway";
     max-width: 800px;
 }
@@ -218,13 +218,12 @@ nav {
     background-color: #f0f8ff;
 }
 .register-page-button-frame:hover {
-    box-shadow: 0 0 15px 3px #ffffff;
+    box-shadow: 0 0 15px 3px #898989;
 }
 #new-customer-button, #new-sp-button {
     max-width: 375px;
     overflow: auto;
 }
-
 
 
 /*========== DASHBOARD ==========*/
@@ -249,6 +248,18 @@ nav {
 }
 #appointment-type-card {
     width: 70%;
+}
+
+
+/*========== SERVICE PROVIDERS INDEX ==========*/
+#service-providers-title {
+    width: 100%;
+    text-align: center;
+    font-family: "Raleway";
+    font-weight: 700;
+    font-size: 60px;
+    color: #00438b;
+    margin-top: 60px;
 }
 
 

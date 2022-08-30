@@ -9,9 +9,17 @@
 </head>
 <%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
-    <h1>Service Providers Index</h1>
-    <% for (let i = 0; i < serviceProviders.length; i++) { %>
-        <a href="/sp/<%= serviceProviders[i].id %>"><%= serviceProviders[i].firstName %></a>
-    <% } %>
+    <div id="service-providers-title">Service Providers</div>
+    <div id="appointment-types-card-div">
+        <% for (let i = 0; i < serviceProviders.length; i++) { %>
+        <div class="card mx-4" id="appointment-type-card">
+            <div class="card-body">
+                <h5 class="card-title"><%= serviceProviders[i].company %></h5>
+                <p><%= serviceProviders[i].description %></p>
+                <a href="/sp/<%= serviceProviders[i].id %>"><button class="btn btn-secondary">View Details</button></a>
+            </div>
+        </div>
+        <% } %>
+    </div>
 </body>
 </html>

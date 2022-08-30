@@ -7,7 +7,7 @@ const serviceproviderSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    description: String,
+    description: { type: String, required: true },
     availableSunday: { type: Boolean, default: false },
     sundayStart: { type: String, default: "08:00" },
     sundayEnd: { type: String, default: "16:00" },
