@@ -102,7 +102,7 @@ app.get("/dashboard", ensureAuthenticated, async (req, res) => {
         return a.chosenDate - b.chosenDate
     })
     pastAppointments = pastAppointments.sort((a, b) => {
-        return a.chosenDate - b.chosenDate
+        return b.chosenDate - a.chosenDate
     })
     res.render("dashboard.ejs", {
         user: req.user,
