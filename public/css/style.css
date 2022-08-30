@@ -1,3 +1,8 @@
+html {
+    height: 100%;
+}
+
+/*========== NAVBAR ==========*/
 nav {
     display: flex;
     height: fit-content;
@@ -39,6 +44,9 @@ nav {
     margin-left: 20px;
 }
 
+
+/*========== HOMEPAGE ==========*/
+/*Banner 1*/
 #homepage-banner-1 {
     display: flex;
     flex-wrap: nowrap;
@@ -82,7 +90,7 @@ nav {
     margin-right: -35px;
     margin-left: 40px;
 }
-
+/*Banner 2*/
 #homepage-banner-2 {
     display: flex;
     flex-direction: column;
@@ -124,6 +132,8 @@ nav {
     font-family: "Raleway";
 }
 
+
+/*========== FOOTER ==========*/
 #footer-block {
     display: flex;
     background-color: #00438b;
@@ -144,9 +154,9 @@ nav {
 }
 #about-appt-about {
     float: left;
-    font-size: 35px;
-    margin-right: 9px;
-    margin-top: 6px;
+    font-size: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 #about-appt-appt {
     font-family: "Lobster";
@@ -179,13 +189,45 @@ nav {
 #copyright-and-privacy {
     text-align: right;
     margin: 80px 100px 80px 80px;
-    font-size: 15px;
+    font-size: 14px;
 }
 #privacy:hover {
     text-decoration: underline;
     cursor: default;
 }
 
+
+/*========== REGISTER PAGE ==========*/
+#register-page {
+    background-color: #d9eaff;
+    height: 100%;
+}
+#register-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -93.5px;
+}
+.register-page-button-frame {
+    border-radius: 40px;
+    border-width: 6px;
+    margin: 0px 50px;
+    border-color: #7ebdff;
+    background-color: #f0f8ff;
+}
+.register-page-button-frame:hover {
+    box-shadow: 0 0 15px 3px #ffffff;
+}
+#new-customer-button, #new-sp-button {
+    max-width: 375px;
+    overflow: auto;
+}
+
+
+
+/*========== DASHBOARD ==========*/
 #dashboard-title {
     margin: 30px;
 }
@@ -200,7 +242,6 @@ nav {
     margin: 0px 30px;
     padding: 30px;
 }
-
 #appointment-types-card-div {
     display: flex;
     flex-wrap: wrap;
@@ -211,6 +252,7 @@ nav {
 }
 
 
+/*========== MEDIA QUERIES ==========*/
 @media (max-width: 1250px) {
     nav, #homepage-banner-1, #homepage-banner-2, #footer-block {
         flex-wrap: wrap;

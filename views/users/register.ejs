@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="register-html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +8,14 @@
     <title>Register New Account</title>
 </head>
 <%- include("../partials/navbar.ejs", {user: user}) %>
-<body>
-    <h1>Register</h1>
-    <a href="/users/register/newcustomer">New Customer</a>
-    <a href="/users/register/newserviceprovider">New Service Provider</a>
+<body id="register-page">
+    <div id="register-container">
+        <form action="/users/register/newcustomer" method="GET">
+            <button type="submit" class="register-page-button-frame"><img src="/assets/images/customer-button.png" id="new-customer-button"></button>
+        </form>
+        <form action="/users/register/newserviceprovider" method="GET">
+            <button type="submit" class="register-page-button-frame"><img src="/assets/images/sp-button.png" id="new-sp-button"></button>
+        </form>
+    </div>
 </body>
 </html>
