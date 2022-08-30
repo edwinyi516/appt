@@ -30,7 +30,7 @@
         </fieldset>
         <fieldset>
             <label for="phone">Phone Number:</label>
-            <input id="phone" type="tel" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= typeof phone != "undefined" ? phone : "" %>">
+            <input id="phone" type="tel" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()">
         </fieldset>
         <fieldset>
             <label for="password">Password:</label>
@@ -42,5 +42,14 @@
         </fieldset>
         <input type="submit" value="Submit">
     </form>
+    <script>
+        const addDash = () => {
+                let inputValue = document.querySelector("#phone").value
+                let inputValueLength = inputValue.length
+                if(inputValue.length == 3 || inputValue.length == 7){
+                    document.querySelector("#phone").value = inputValue + "-"
+                }
+            }
+    </script>
 </body>
 </html>

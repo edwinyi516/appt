@@ -28,6 +28,10 @@ nav {
     margin-left: 15px;
     margin-bottom: 10px;
 }
+#hi-user-nav {
+    color: #00438b;
+    font-family: "Raleway"
+}
 .dropdown-menu {
     font-family: "Raleway";
 }
@@ -35,7 +39,7 @@ nav {
     margin-left: 20px;
 }
 
-#homepage-banner1 {
+#homepage-banner-1 {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -85,6 +89,7 @@ nav {
     align-items: center;
     padding: 90px 0px;
     background-color: #f7f7f7;
+    overflow: auto;
 }
 #optimize-text {
     font-family: "Lato";
@@ -119,6 +124,68 @@ nav {
     font-family: "Raleway";
 }
 
+#footer-block {
+    display: flex;
+    background-color: #00438b;
+    color: #ffffff;
+    justify-content: center;
+}
+#footer-left-half {
+    width: 50%;
+    min-width: 575px;
+    padding: 80px 80px 80px 100px;
+    font-size: 18px;
+    font-family: "Raleway";
+    max-width: 800px;
+}
+#about-appt {
+    display: flex;
+    align-items: center;
+}
+#about-appt-about {
+    float: left;
+    font-size: 35px;
+    margin-right: 9px;
+    margin-top: 6px;
+}
+#about-appt-appt {
+    font-family: "Lobster";
+    color: #007bff;
+    font-size: 50px;
+}
+#find-out-more {
+    margin-top: 3px;
+}
+#social-media-links {
+    margin-top: 10px;
+}
+#github-icon, #linkedin-icon, #instagram-icon {
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+#github-icon:hover, #linkedin-icon:hover, #instagram-icon:hover {
+    filter: drop-shadow(1px 1px 3px #ffffff);
+}
+#footer-right-half {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 50%;
+    min-width: 575px;
+    max-width: 800px;
+    font-family: "Raleway";
+}
+#copyright-and-privacy {
+    text-align: right;
+    margin: 80px 100px 80px 80px;
+    font-size: 15px;
+}
+#privacy:hover {
+    text-decoration: underline;
+    cursor: default;
+}
+
 #dashboard-title {
     margin: 30px;
 }
@@ -145,7 +212,7 @@ nav {
 
 
 @media (max-width: 1250px) {
-    #homepage-banner1 {
+    nav, #homepage-banner-1, #homepage-banner-2, #footer-block {
         flex-wrap: wrap;
         min-width: 750px;
     }
@@ -164,5 +231,9 @@ nav {
     #main-banner-image {
         margin: auto;
         margin-bottom: -100px;
+    }
+    #footer-block {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

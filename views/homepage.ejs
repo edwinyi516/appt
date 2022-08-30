@@ -9,7 +9,7 @@
 </head>
 <%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
-    <div id="homepage-banner1">
+    <div id="homepage-banner-1">
         <div id="banner1-1">
             <div id="welcome-message">
                 <div id="welcome-to">Welcome to </div>
@@ -24,7 +24,7 @@
     </div>
     <div id="homepage-banner-2">
         <div id="optimize-text">Simplify the inconvenient process of setting appointments</div>
-        <div class="card-deck">
+        <div class="card-deck" id="homepage-card-deck">
             <div class="card mx-4">
                 <div class="card-body">
                     <img src="./assets/images/checklist-icon.png" class="card-icon">
@@ -51,5 +51,6 @@
             <button type="submit" class="btn btn-primary" id="banner-2-get-started-button">Get Started</button>
         </form>
     </div>
+    <%- include("./partials/footer.ejs", {user: user}) %>
 </body>
 </html>

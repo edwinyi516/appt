@@ -25,6 +25,9 @@
 <br><br>
 
 <h4>Upcoming Appointments</h4>
+<% if (upcomingAppointments.length === 0) { %>
+    <p>You have no booked appointments!</p>
+<% } else { %>
 <div id="upcoming-appointments-card-div">
     <% for (i = 0; i < upcomingAppointments.length; i++) { %>
     <div class="card mx-4" id="upcoming-appointments-card">
@@ -43,3 +46,4 @@
     </div>
     <% } %>
 </div>
+<% } %>

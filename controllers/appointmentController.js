@@ -23,31 +23,31 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
 
     let bookedAppointmentsArray = []
-    let afterTime = ""
+    let joinedTime = ""
     let bookedAppointments = await Appointment.find({ serviceProvider: `${req.params.id}` })
     for (i = 0; i < bookedAppointments.length; i++) {
-        let newTest = bookedAppointments[i].chosenTime
+        let newTime = bookedAppointments[i].chosenTime
         if (bookedAppointments[i].chosenTime.length === 6 && bookedAppointments[i].chosenTime[3] === "0") {
-            newTest = bookedAppointments[i].chosenTime.split('')
-            newTest[3] = "1"
-            afterTime = newTest.join('')
+            newTime = bookedAppointments[i].chosenTime.split('')
+            newTime[3] = "1"
+            joinedTime = newTime.join('')
         }
         else if (bookedAppointments[i].chosenTime.length === 6 && bookedAppointments[i].chosenTime[3] === "5") {
-            newTest = bookedAppointments[i].chosenTime.split('')
-            newTest[3] = "6"
-            afterTime = newTest.join('')
+            newTime = bookedAppointments[i].chosenTime.split('')
+            newTime[3] = "6"
+            joinedTime = newTime.join('')
         } 
         else if (bookedAppointments[i].chosenTime.length === 7 && bookedAppointments[i].chosenTime[4] === "0") {
-            newTest = bookedAppointments[i].chosenTime.split('')
-            newTest[4] = "1"
-            afterTime = newTest.join('')
+            newTime = bookedAppointments[i].chosenTime.split('')
+            newTime[4] = "1"
+            joinedTime = newTime.join('')
         } 
         else if (bookedAppointments[i].chosenTime.length === 7 && bookedAppointments[i].chosenTime[4] === "5") {
-            newTest = bookedAppointments[i].chosenTime.split('')
-            newTest[4] = "6"
-            afterTime = newTest.join('')
+            newTime = bookedAppointments[i].chosenTime.split('')
+            newTime[4] = "6"
+            joinedTime = newTime.join('')
         }
-        bookedAppointmentsArray.push([bookedAppointments[i].chosenTime, afterTime]);
+        bookedAppointmentsArray.push([bookedAppointments[i].chosenTime, joinedTime]);
     }
 
     let monday = 10
