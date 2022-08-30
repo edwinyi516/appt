@@ -222,7 +222,7 @@ nav {
     box-shadow: 0 0 15px 3px #898989;
 }
 #new-customer-button, #new-sp-button {
-    max-width: 375px;
+    max-width: 350px;
     overflow: auto;
 }
 

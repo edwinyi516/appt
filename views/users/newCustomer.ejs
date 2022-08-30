@@ -27,7 +27,7 @@
         </fieldset>
         <fieldset>
             <label for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
-            <input id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()">
+            <input id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()" oninvalid="this.setCustomValidity('Please input the correct format (e.g. 123-456-7890)')">
         </fieldset>
         <fieldset>
             <label for="password">Password<span style="color: red">*</span>&nbsp;</label>
