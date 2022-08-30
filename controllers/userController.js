@@ -16,11 +16,11 @@ router.get("/register/newcustomer", (req, res) => {
 
 //POST NEW CUSTOMER
 router.post("/register/newcustomer", (req, res) => {
-    const { firstName, lastName, phone, email, password, password2, img } = req.body
+    const { firstName, lastName, phone, email, password, password2 } = req.body
     let errors = []
     //Check required fields
     if(!firstName || !lastName || !phone || !email || !password || !password2) {
-        errors.push({ msg: "Please fill in all fields" })
+        errors.push({ msg: "Please fill in all required fields" })
     }
     //Check passwords match
     if(password !== password2) {
@@ -28,7 +28,7 @@ router.post("/register/newcustomer", (req, res) => {
     }
     //Check passwords length
     if(password.length < 6) {
-        errors.push({ msg: "Password must be at least 6 characters" })
+        errors.push({ msg: "Password must be at least 6 characters long" })
     }
     if(errors.length > 0) {
         res.render("users/newCustomer.ejs", {
@@ -39,8 +39,7 @@ router.post("/register/newcustomer", (req, res) => {
             email,
             phone,
             password,
-            password2,
-            img
+            password2
         })
     }
     else {
@@ -56,8 +55,7 @@ router.post("/register/newcustomer", (req, res) => {
                         email,
                         phone,
                         password,
-                        password2,
-                        img
+                        password2
                     })
                 }
                 else {
@@ -66,8 +64,7 @@ router.post("/register/newcustomer", (req, res) => {
                         lastName,
                         email,
                         phone,
-                        password,
-                        img
+                        password
                     })
                     //Hash password
                     bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newCustomer.password, salt, (err, hash) => {
@@ -94,7 +91,7 @@ router.get("/register/newserviceprovider", (req, res) => {
 
 //POST NEW SERVICE PROVIDER
 router.post("/register/newserviceprovider", (req, res) => {
-    const { firstName, lastName, company, description, phone, email, password, password2, img } = req.body
+    const { firstName, lastName, company, description, phone, email, password, password2 } = req.body
     let errors = []
     //Check required fields
     if(!firstName || !lastName || !company || !description || !phone || !email || !password || !password2) {
@@ -106,7 +103,7 @@ router.post("/register/newserviceprovider", (req, res) => {
     }
     //Check passwords length
     if(password.length < 6) {
-        errors.push({ msg: "Password must be at least 6 characters" })
+        errors.push({ msg: "Password must be at least 6 characters long" })
     }
     if(errors.length > 0) {
         res.render("users/newServiceProvider.ejs", {
@@ -119,8 +116,7 @@ router.post("/register/newserviceprovider", (req, res) => {
             email,
             phone,
             password,
-            password2,
-            img
+            password2
         })
     }
     else {
@@ -138,8 +134,7 @@ router.post("/register/newserviceprovider", (req, res) => {
                         email,
                         phone,
                         password,
-                        password2,
-                        img
+                        password2
                     })
                 }
                 else {
@@ -150,8 +145,7 @@ router.post("/register/newserviceprovider", (req, res) => {
                         description,
                         email,
                         phone,
-                        password,
-                        img
+                        password
                     })
                     //Hash password
                     bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newServiceProvider.password, salt, (err, hash) => {

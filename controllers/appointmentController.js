@@ -36,6 +36,7 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
         }
         bookedAppointmentsArray.push([bookedAppointments[i].chosenTime, joinedTime]);
     }
+    let sunday = 10
     let monday = 10
     let tuesday = 10
     let wednesday = 10

@@ -6,7 +6,6 @@ const customerSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    img: { data: Buffer, contentType: String },
     usertype: { type: String, required: true, default: "customer" }
 })
 
