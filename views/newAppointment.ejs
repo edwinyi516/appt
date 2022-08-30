@@ -14,9 +14,13 @@
     <form name="new-appointment-form" id="new-appointment-form" action="/appointments/new" method="POST">
         <label for="chosenAppointmentTypeDuration">Choose appointment type: </label>
         <select name="chosenAppointmentTypeDuration" id="chosenAppointmentTypeDuration" form="new-appointment-form">
-            <option id="select-one" value="" disabled selected>Select One</option>
-            <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
-            <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
+            <% if (serviceProvider.appointmentTypes.length === 0) { %>
+                <option id="select-one" value="" disabled selected>No appointment types available</option>
+            <% } else { %>           
+                <option id="select-one" value="" disabled selected>Select One</option>
+                <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
+                <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
+                <% } %>
             <% } %>
         </select>
         <input id="chosenAppointmentType" name="chosenAppointmentType" type="text" hidden>

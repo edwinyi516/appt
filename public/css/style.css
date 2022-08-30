@@ -199,7 +199,7 @@ nav {
 
 /*========== REGISTER PAGE ==========*/
 #register-page {
-    background-color: #d9eaff;
+    background-color: #deedff;
     height: 100%;
 }
 #register-container {
@@ -259,11 +259,17 @@ nav {
     font-weight: 700;
     font-size: 60px;
     color: #00438b;
-    margin-top: 60px;
+    margin: 60px 0px;
+}
+#service-providers-index-card-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 #sp-index-card {
     width: 40%;
     text-align: center;
+    background-color: #f6faff;
 }
 #sp-card-title {
     font-weight: 600;
@@ -271,6 +277,15 @@ nav {
 .sp-card-description {
     color: #00538b;
     font-style: italic;
+}
+
+
+/*========== BOOTSTRAP CUSTOMIZATION ==========*/
+.modal-body {
+    margin: 10px 0px 15px 0px;
+}
+.modal-dialog {
+    margin-top: -93.5px;
 }
 
 
