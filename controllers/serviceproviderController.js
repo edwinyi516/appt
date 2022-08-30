@@ -11,6 +11,9 @@ const { ensureAuthenticated } = require("../config/auth.js")
 //INDEX
 router.get("/", async (req, res) => {
     let serviceProviders = await ServiceProvider.find({})
+    serviceProviders = serviceProviders.sort((a, b) => {
+        return a.company.localeCompare(b.company)
+    })
     res.render("indexSP.ejs", {
         serviceProviders: serviceProviders,
         user: req.user

@@ -261,6 +261,17 @@ nav {
     color: #00438b;
     margin-top: 60px;
 }
+#sp-index-card {
+    width: 40%;
+    text-align: center;
+}
+#sp-card-title {
+    font-weight: 600;
+}
+.sp-card-description {
+    color: #00538b;
+    font-style: italic;
+}
 
 
 /*========== MEDIA QUERIES ==========*/
