@@ -13,14 +13,14 @@
         <div id="signin-form-box">
             <h1 id="signin-form-title">Sign In</h1>
             <%- include("../partials/messages.ejs") %>
-            <form action="/users/signin" method="POST">
-                <fieldset>
-                    <label for="email">Email:</label>
-                    <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" value="<%= typeof email != "undefined" ? email : "" %>">
+            <form id="sr-form" action="/users/signin" method="POST">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="email">Email:</label>
+                    <input class="sr-input" id="email" type="email" autocomplete="off" spellcheck="false" name="email" value="<%= typeof email != "undefined" ? email : "" %>">
                 </fieldset>
-                <fieldset>
-                    <label for="password">Password:</label>
-                    <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" value="<%= typeof password != "undefined" ? password : "" %>">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="password">Password:</label>
+                    <input class="sr-input" id="password" type="password" autocomplete="off" spellcheck="false" name="password" value="<%= typeof password != "undefined" ? password : "" %>">
                 </fieldset>
                 <input id="signin-submit-button" class="btn btn-primary" type="submit" value="Submit">
             </form>

@@ -1,19 +1,20 @@
 <% if (pastAppointments.length === 0) { %>
     <h6>You have no previous appointments</h6>
 <% } else { %>
-<div id="past-appointments-card-div">
-    <% for (i = 0; i < pastAppointments.length; i++) { %>
-    <div class="card mx-4" id="past-appointments-card">
-        <div class="card-body">
-            <h5 class="card-title"><%= pastAppointments[i].chosenAppointmentType %></h5>
-            <% if (user.usertype === "serviceprovider") { %>
-            <p class="card-text">with <%= pastAppointments[i].customerName %></p>
-            <% } else { %>
-            <p class="card-text">with <%= pastAppointments[i].serviceproviderName %></p>
-            <% } %>
-            <p class="card-text"><%= pastAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= pastAppointments[i].chosenTime %></p>
+    <div id="past-appointments-card-div">
+        <p id="past-in-order">From most recent to oldest</p>
+        <% for (i = 0; i < pastAppointments.length; i++) { %>
+        <div class="card mx-4" id="past-appointments-card">
+            <div class="card-body">
+                <h5 class="card-title"><%= pastAppointments[i].chosenAppointmentType %></h5>
+                <% if (user.usertype === "serviceprovider") { %>
+                <p class="card-text">with <%= pastAppointments[i].customerName %></p>
+                <% } else { %>
+                <p class="card-text">with <%= pastAppointments[i].serviceproviderName %></p>
+                <% } %>
+                <p class="card-text"><%= pastAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= pastAppointments[i].chosenTime %></p>
+            </div>
         </div>
+        <% } %>
     </div>
-    <% } %>
-</div>
 <% } %>

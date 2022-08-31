@@ -1,69 +1,69 @@
 <!-- Modal Trigger -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAppointmentTypeModal">New Appointment Type</button>
+<button  id="new-appointment-type-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAppointmentTypeModal">New Appointment Type</button>
 <!-- Modal -->
 <div class="modal fade" id="newAppointmentTypeModal" tabindex="-1" role="dialog" aria-labelledby="newAppointmentTypeModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="newAppointmentTypeModalTitle">New Appointment Type</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newAppointmentTypeModalTitle">New Appointment Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="appointmenttypeform" action="/sp/newappointmenttype?_method=PUT" method="POST">
+                    <fieldset>
+                        <label for="appointmentTypeTitle">Title: </label>
+                        <input id="appointmentTypeTitle" type="text" autocomplete="off" spellcheck="false" name="appointmentTypeTitle" placeholder="Appointment Type Title">
+                    </fieldset>
+                    <fieldset>
+                        <label for="appointmentTypeDescription">Description: </label>
+                        <input id="appointmentTypeDescription" type="textarea" autocomplete="off" spellcheck="false" name="appointmentTypeDescription" placeholder="Appointment Type Description">
+                    </fieldset>
+                    <fieldset>
+                        <label for="appointmentTypeDuration">Duration: </label>
+                        <select name="appointmentTypeDuration" id="appointmentTypeDuration" form="appointmenttypeform">
+                            <option value="" disabled selected>Choose a duration</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="90">1 hour 30 minutes</option>
+                            <option value="120">2 hours</option>
+                            <option value="0">> 2 hours</option>
+                        </select>
+                    </fieldset>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create New Appointment Type</button>
+                </form>
+            </div>
         </div>
-        <div class="modal-body">
-            <form id="appointmenttypeform" action="/sp/newappointmenttype?_method=PUT" method="POST">
-                <fieldset>
-                    <label for="appointmentTypeTitle">Title: </label>
-                    <input id="appointmentTypeTitle" type="text" autocomplete="off" spellcheck="false" name="appointmentTypeTitle" placeholder="Appointment Type Title">
-                </fieldset>
-                <fieldset>
-                    <label for="appointmentTypeDescription">Description: </label>
-                    <input id="appointmentTypeDescription" type="textarea" autocomplete="off" spellcheck="false" name="appointmentTypeDescription" placeholder="Appointment Type Description">
-                </fieldset>
-                <fieldset>
-                    <label for="appointmentTypeDuration">Duration: </label>
-                    <select name="appointmentTypeDuration" id="appointmentTypeDuration" form="appointmenttypeform">
-                        <option value="" disabled selected>Choose a duration</option>
-                        <option value="15">15 minutes</option>
-                        <option value="30">30 minutes</option>
-                        <option value="45">45 minutes</option>
-                        <option value="60">1 hour</option>
-                        <option value="90">1 hour 30 minutes</option>
-                        <option value="120">2 hours</option>
-                        <option value="0">> 2 hours</option>
-                      </select>
-                </fieldset>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Create New Appointment Type</button>
-            </form>
-        </div>
-    </div>
     </div>
 </div>
 
 <div id="appointment-types-card-div">
     <% for (i = 0; i < user.appointmentTypes.length; i++) { %>
-    <div class="card mx-4" id="appointment-type-card">
-        <div class="card-body">
-            <h5 class="card-title"><%= user.appointmentTypes[i].title %></h5>
-            <p class="card-text"><%= user.appointmentTypes[i].description %></p>
-            <p class="card-text">Duration: 
-                <% if (user.appointmentTypes[i].duration <= 45) { %>
-                    <%= user.appointmentTypes[i].duration %> minutes
-                <% } else if (user.appointmentTypes[i].duration === 60) { %>
-                    1 hour
-                <% } else if (user.appointmentTypes[i].duration === 90) { %>
-                    1 hour 30 minutes
-                <% } else if (user.appointmentTypes[i].duration === 120) { %>
-                    2 hours
-                <% } else if (user.appointmentTypes[i].duration === 0) { %>
-                    > 2 hours
-                <% } %>
+        <div class="card mx-4" id="appointment-type-card">
+            <div class="card-body">
+                <h5 class="card-title"><%= user.appointmentTypes[i].title %></h5>
+                <p class="card-text"><%= user.appointmentTypes[i].description %></p>
+                <p class="card-text">Duration: 
+                    <% if (user.appointmentTypes[i].duration <= 45) { %>
+                        <%= user.appointmentTypes[i].duration %> minutes
+                    <% } else if (user.appointmentTypes[i].duration === 60) { %>
+                        1 hour
+                    <% } else if (user.appointmentTypes[i].duration === 90) { %>
+                        1 hour 30 minutes
+                    <% } else if (user.appointmentTypes[i].duration === 120) { %>
+                        2 hours
+                    <% } else if (user.appointmentTypes[i].duration === 0) { %>
+                        > 2 hours
+                    <% } %>
                 </p>
-            <form action="/sp/deleteAppointmentType/<%= user.appointmentTypes[i].id %>?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+                <form action="/sp/deleteAppointmentType/<%= user.appointmentTypes[i].id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
         </div>
-    </div>
     <% } %>
 </div>

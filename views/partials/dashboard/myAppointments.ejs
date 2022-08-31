@@ -29,12 +29,12 @@
                                     <h5><%= todaysAppointments[i].chosenAppointmentType %></h5>
                                     <% if (user.usertype === "serviceprovider") { %>
                                         <p>with <%= todaysAppointments[i].customerName %></p>
-                                        <p>Customer phone: <%= todaysAppointments[i].customerPhone %></p>
-                                        <p>Customer email: <%= todaysAppointments[i].customerEmail %></p>
+                                        <p><%= todaysAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= todaysAppointments[i].chosenTime %>&nbsp;(<%= todaysAppointments[i].chosenAppointmentTypeDuration %> min)</p>
+                                        <p>Customer phone: <%= todaysAppointments[i].customerPhone %><br>Customer email: <%= todaysAppointments[i].customerEmail %></p>
                                     <% } else { %>
                                         <p>with <%= todaysAppointments[i].serviceproviderName %></p>
-                                        <p>Phone: <%= todaysAppointments[i].serviceproviderPhone %></p>
-                                        <p>Email: <%= todaysAppointments[i].serviceproviderEmail %></p>
+                                        <p><%= todaysAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= todaysAppointments[i].chosenTime %>&nbsp;(<%= todaysAppointments[i].chosenAppointmentTypeDuration %> min)</p>
+                                        <p>Phone: <%= todaysAppointments[i].serviceproviderPhone %><br>Email: <%= todaysAppointments[i].serviceproviderEmail %></p>
                                     <% } %>
                                 </div>
                             </div>
@@ -85,9 +85,7 @@
                     <% } else { %>
                     <p class="card-text">with <%= upcomingAppointments[i].serviceproviderName %></p>
                     <% } %>
-                    <p class="card-text"><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %></p>
-                    <br>
-                    <p><%= upcomingAppointments[i].chosenTime %>&nbsp;(<%= upcomingAppointments[i].chosenAppointmentTypeDuration %> min)</p>
+                    <p class="card-text"><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %>&nbsp;(<%= upcomingAppointments[i].chosenAppointmentTypeDuration %> min)</p>
                     <!-- Modal Trigger -->
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewUpcomingAppointmentDetailsModal">View Details</button>
                     <!-- Modal -->
@@ -104,12 +102,12 @@
                                     <h5><%= upcomingAppointments[i].chosenAppointmentType %></h5>
                                     <% if (user.usertype === "serviceprovider") { %>
                                         <p>with <%= upcomingAppointments[i].customerName %></p>
-                                        <p>Customer phone: <%= upcomingAppointments[i].customerPhone %></p>
-                                        <p>Customer email: <%= upcomingAppointments[i].customerEmail %></p>
+                                        <p><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %>&nbsp;(<%= upcomingAppointments[i].chosenAppointmentTypeDuration %> min)</p>
+                                        <p>Customer phone: <%= upcomingAppointments[i].customerPhone %><br>Customer email: <%= upcomingAppointments[i].customerEmail %></p>
                                     <% } else { %>
                                         <p>with <%= upcomingAppointments[i].serviceproviderName %></p>
-                                        <p>Phone: <%= upcomingAppointments[i].serviceproviderPhone %></p>
-                                        <p>Email: <%= upcomingAppointments[i].serviceproviderEmail %></p>
+                                        <p><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %>&nbsp;(<%= upcomingAppointments[i].chosenAppointmentTypeDuration %> min)</p>
+                                        <p>Phone: <%= upcomingAppointments[i].serviceproviderPhone %><br>Email: <%= upcomingAppointments[i].serviceproviderEmail %></p>
                                     <% } %>
                                 </div>
                             </div>

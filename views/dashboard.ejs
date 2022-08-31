@@ -8,51 +8,52 @@
     <title>Dashboard - Appt</title>
 </head>
 <%- include("./partials/navbar.ejs", {user: user}) %>
-<body>
+<body id="dashboard-body">
     <div id="dashboard-title">
-        <h1>Dashboard</h1>
-        <p>Welcome to Appt!</p>
+        <h1 id="dashboard-title-text">Dashboard</h1>
+        <p id="dash-welcome-text">Welcome to Appt!</p>
     </div>
     <%- include("./partials/messages.ejs") %>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="my-appointments-tab" data-toggle="tab" href="#my-appointments" role="tab" aria-controls="my-appointments" aria-selected="true">My Appointments</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="past-appointments" aria-selected="false">Past Appointments</a>
-        </li>
-        <% if (user.usertype === "serviceprovider") { %>
-        <li class="nav-item">
-            <a class="nav-link" id="availability-tab" data-toggle="tab" href="#availability" role="tab" aria-controls="availability" aria-selected="false">My Availability</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="appointment-types-tab" data-toggle="tab" href="#appointment-types" role="tab" aria-controls="appointment-types" aria-selected="false">Appointment Types</a>
-        </li>
-        <% } %>
-        <li class="nav-item">
-            <a class="nav-link" id="my-profile-tab" data-toggle="tab" href="#my-profile" role="tab" aria-controls="my-profile" aria-selected="false">My Profile</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="my-appointments" role="tabpanel" aria-labelledby="my-appointments-tab">
-            <%- include("./partials/dashboard/myAppointments.ejs", {user: user}) %>
-        </div>
-        <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="past-appointments-tab">
-            <%- include("./partials/dashboard/past.ejs", {user: user}) %>
-        </div>
-        <% if (user.usertype === "serviceprovider") { %>
-        <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
-            <%- include("./partials/dashboard/availability.ejs", {user: user}) %>
-        </div>
-        <div class="tab-pane fade" id="appointment-types" role="tabpanel" aria-labelledby="appointment-types-tab">
-            <%- include("./partials/dashboard/appointmentTypes.ejs", {user: user}) %>
-        </div>
-        <% } %>
-        <div class="tab-pane fade" id="my-profile" role="tabpanel" aria-labelledby="my-profile-tab">
-            <%- include("./partials/dashboard/profile.ejs", {user: user}) %>
+    <div id="dashboard-content">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="my-appointments-tab" data-toggle="tab" href="#my-appointments" role="tab" aria-controls="my-appointments" aria-selected="true">My Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="past-appointments-tab" data-toggle="tab" href="#past-appointments" role="tab" aria-controls="past-appointments" aria-selected="false">Past Appointments</a>
+            </li>
+            <% if (user.usertype === "serviceprovider") { %>
+                <li class="nav-item">
+                    <a class="nav-link" id="availability-tab" data-toggle="tab" href="#availability" role="tab" aria-controls="availability" aria-selected="false">My Availability</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="appointment-types-tab" data-toggle="tab" href="#appointment-types" role="tab" aria-controls="appointment-types" aria-selected="false">Appointment Types</a>
+                </li>
+            <% } %>
+            <li class="nav-item">
+                <a class="nav-link" id="my-profile-tab" data-toggle="tab" href="#my-profile" role="tab" aria-controls="my-profile" aria-selected="false">My Profile</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="my-appointments" role="tabpanel" aria-labelledby="my-appointments-tab">
+                <%- include("./partials/dashboard/myAppointments.ejs", {user: user}) %>
+            </div>
+            <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="past-appointments-tab">
+                <%- include("./partials/dashboard/past.ejs", {user: user}) %>
+            </div>
+            <% if (user.usertype === "serviceprovider") { %>
+                <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
+                    <%- include("./partials/dashboard/availability.ejs", {user: user}) %>
+                </div>
+                <div class="tab-pane fade" id="appointment-types" role="tabpanel" aria-labelledby="appointment-types-tab">
+                    <%- include("./partials/dashboard/appointmentTypes.ejs", {user: user}) %>
+                </div>
+            <% } %>
+            <div class="tab-pane fade" id="my-profile" role="tabpanel" aria-labelledby="my-profile-tab">
+                <%- include("./partials/dashboard/profile.ejs", {user: user}) %>
+            </div>
         </div>
     </div>
-    
     <script>
         flatpickr(".availability-time-start", {
             enableTime: true,

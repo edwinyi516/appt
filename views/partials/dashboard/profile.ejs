@@ -1,10 +1,12 @@
-<p>Name: <%= user.firstName + " " + user.lastName %></p>
-<% if (user.usertype === "serviceprovider") { %>
-<p>Company: <%= user.company %></p>
-<p>Company description: <%= user.description %></p>
-<% } %>
-<p>Phone: <%= user.phone %></p>
-<p>Email: <%= user.email %></p>
-<form action="users/editprofile">
-    <button type="submit" class="btn btn-primary" id="edit-profile-button">Edit Profile</button>
-</form>
+<div id="my-profile-div">
+    <p><strong>Name:&nbsp;&nbsp;</strong><%= user.firstName + " " + user.lastName %></p>
+    <% if (user.usertype === "serviceprovider") { %>
+    <p><strong>Company:&nbsp;&nbsp;</strong><%= user.company %></p>
+    <p><strong>Company description:&nbsp;&nbsp;</strong><%= user.description %></p>
+    <% } %>
+    <p><strong>Phone:&nbsp;&nbsp;</strong><%= user.phone %></p>
+    <p><strong>Email:&nbsp;&nbsp;</strong><%= user.email %></p>
+    <form action="users/editprofile">
+        <button type="submit" class="btn btn-primary" id="edit-profile-button">Edit Profile</button>
+    </form>
+</div>

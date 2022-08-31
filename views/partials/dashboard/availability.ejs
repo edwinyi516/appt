@@ -1,4 +1,4 @@
-<form action="/sp/updateavailability?_method=PUT" method="POST">
+<form id="availability-form" action="/sp/updateavailability?_method=PUT" method="POST">
     <fieldset class="availability-day">
         <input class="form-check-input" type="checkbox" name="availableSunday" id="availableSunday" <% if (user.availableSunday === true) { %>
             checked
@@ -75,5 +75,5 @@
             <input class="form-control unavailable-dates" name="unavailableDates" id="unavailableDates" value="*EJS* user.unavailableDates *EJS*">
         </div>
     </fieldset> -->
-    <input type="submit" value="Save Changes">
+    <input id="availability-submit-button" class="btn btn-primary" type="submit" value="Save Changes">
 </form>

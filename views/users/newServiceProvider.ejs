@@ -13,41 +13,41 @@
         <div id="register-form-box-sp">
             <h1 id="create-new-user-title">Create New Service Provider</h1>
             <%- include("../partials/messages.ejs") %>
-            <form action="/users/register/newserviceprovider" method="POST">
+            <form id="sr-form" action="/users/register/newserviceprovider" method="POST">
                 <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
                 <div id="name-line">
-                    <fieldset>
-                        <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
-                        <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" value="<%= typeof firstName != "undefined" ? firstName : "" %>">
+                    <fieldset id="sr-fieldset">
+                        <label id="sr-label" for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
+                        <input class="sr-input" id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" value="<%= typeof firstName != "undefined" ? firstName : "" %>">
                     </fieldset>
-                    <fieldset>
-                        <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
-                        <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" value="<%= typeof lastName != "undefined" ? lastName : "" %>">
+                    <fieldset id="sr-fieldset">
+                        <label id="sr-label" for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
+                        <input class="sr-input" id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" value="<%= typeof lastName != "undefined" ? lastName : "" %>">
                     </fieldset>
                 </div>
-                <fieldset>
-                    <label for="company">Company<span style="color: red">*</span>&nbsp;</label>
-                    <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" value="<%= typeof company != "undefined" ? company : "" %>">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="company">Company<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="company" type="text" autocomplete="off" spellcheck="false" name="company" value="<%= typeof company != "undefined" ? company : "" %>">
                 </fieldset>
-                <fieldset>
-                    <label for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
-                    <input id="description" type="textarea" autocomplete="off" spellcheck="false" name="description" value="<%= typeof description != "undefined" ? description : "" %>">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="description" type="textarea" autocomplete="off" spellcheck="false" name="description" value="<%= typeof description != "undefined" ? description : "" %>">
                 </fieldset>
-                <fieldset>
-                    <label for="email">Email<span style="color: red">*</span>&nbsp;</label>
-                    <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" value="<%= typeof email != "undefined" ? email : "" %>">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="email">Email<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="email" type="email" autocomplete="off" spellcheck="false" name="email" value="<%= typeof email != "undefined" ? email : "" %>">
                 </fieldset>
-                <fieldset>
-                    <label for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
-                    <input id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()" oninvalid="this.setCustomValidity('Please input the correct format (e.g. 123-456-7890)')">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()" oninvalid="this.setCustomValidity('Please input the correct format (e.g. 123-456-7890)')">
                 </fieldset>
-                <fieldset>
-                    <label for="password">Password<span style="color: red">*</span>&nbsp;</label>
-                    <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" value="<%= typeof password != "undefined" ? password : "" %>">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="password">Password<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="password" type="password" autocomplete="off" spellcheck="false" name="password" value="<%= typeof password != "undefined" ? password : "" %>">
                 </fieldset>
-                <fieldset>
-                    <label for="password2">Confirm password<span style="color: red">*</span>&nbsp;</label>
-                    <input id="password2" type="password" autocomplete="off" spellcheck="false" name="password2" value="<%= typeof password2 != "undefined" ? password2 : "" %>">
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="password2">Confirm password<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="password2" type="password" autocomplete="off" spellcheck="false" name="password2" value="<%= typeof password2 != "undefined" ? password2 : "" %>">
                 </fieldset>
                 <input id="new-user-submit" class="btn btn-primary" type="submit" value="Submit">
             </form>
