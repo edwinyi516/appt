@@ -11,7 +11,7 @@
 <body id="register-form-body">
     <div id="register-form-page">
         <div id="register-form-box-sp">
-            <h1 id="create-new-user-title">Create New Service Provider</h1>
+            <h1 id="create-new-user-title">New Service Provider</h1>
             <%- include("../partials/messages.ejs") %>
             <form id="sr-form" action="/users/register/newserviceprovider" method="POST">
                 <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
@@ -49,7 +49,7 @@
                     <label id="sr-label" for="password2">Confirm password<span style="color: red">*</span>&nbsp;</label>
                     <input class="sr-input" id="password2" type="password" autocomplete="off" spellcheck="false" name="password2" value="<%= typeof password2 != "undefined" ? password2 : "" %>">
                 </fieldset>
-                <input id="new-user-submit" class="btn btn-primary" type="submit" value="Submit">
+                <input id="new-user-submit" class="btn btn-primary" type="submit" value="Create Account">
             </form>
         </div>
     </div>

@@ -372,6 +372,9 @@ nav {
 #appointment-type-card {
     width: 50%;
 }
+#create-appointment-type-button-block {
+    margin-top: 30px;
+}
 .nav-item {
     font-family: "Raleway";
     font-weight: 500;

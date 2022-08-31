@@ -12,17 +12,17 @@
             </div>
             <div class="modal-body">
                 <form id="appointmenttypeform" action="/sp/newappointmenttype?_method=PUT" method="POST">
-                    <fieldset>
-                        <label for="appointmentTypeTitle">Title: </label>
-                        <input id="appointmentTypeTitle" type="text" autocomplete="off" spellcheck="false" name="appointmentTypeTitle" placeholder="Appointment Type Title">
+                    <fieldset id="sr-fieldset">
+                        <label id="na-label" for="appointmentTypeTitle">Title: </label>
+                        <input id="appointmentTypeTitle" class="sr-input" type="text" autocomplete="off" spellcheck="false" name="appointmentTypeTitle">
                     </fieldset>
-                    <fieldset>
-                        <label for="appointmentTypeDescription">Description: </label>
-                        <input id="appointmentTypeDescription" type="textarea" autocomplete="off" spellcheck="false" name="appointmentTypeDescription" placeholder="Appointment Type Description">
+                    <fieldset id="sr-fieldset">
+                        <label id="na-label" for="appointmentTypeDescription">Description: </label>
+                        <input id="appointmentTypeDescription" class="sr-input" type="textarea" autocomplete="off" spellcheck="false" name="appointmentTypeDescription">
                     </fieldset>
-                    <fieldset>
-                        <label for="appointmentTypeDuration">Duration: </label>
-                        <select name="appointmentTypeDuration" id="appointmentTypeDuration" form="appointmenttypeform">
+                    <fieldset id="sr-fieldset">
+                        <label id="na-label" for="appointmentTypeDuration">Duration: </label>
+                        <select name="appointmentTypeDuration" id="appointmentTypeDuration" class="sr-input" form="appointmenttypeform">
                             <option value="" disabled selected>Choose a duration</option>
                             <option value="15">15 minutes</option>
                             <option value="30">30 minutes</option>
@@ -33,8 +33,10 @@
                             <option value="0">> 2 hours</option>
                         </select>
                     </fieldset>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create New Appointment Type</button>
+                    <div id="create-appointment-type-button-block">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create New Appointment Type</button>
+                    </div>
                 </form>
             </div>
         </div>
