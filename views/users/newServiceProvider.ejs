@@ -10,19 +10,21 @@
 <%- include("../partials/navbar.ejs") %>
 <body id="register-form-body">
     <div id="register-form-page">
-        <div id="register-form-box">
+        <div id="register-form-box-sp">
             <h1 id="create-new-user-title">Create New Service Provider</h1>
             <%- include("../partials/messages.ejs") %>
             <form action="/users/register/newserviceprovider" method="POST">
                 <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
-                <fieldset>
-                    <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
-                    <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= typeof firstName != "undefined" ? firstName : "" %>">
-                </fieldset>
-                <fieldset>
-                    <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
-                    <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= typeof lastName != "undefined" ? lastName : "" %>">
-                </fieldset>
+                <div id="name-line">
+                    <fieldset>
+                        <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
+                        <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= typeof firstName != "undefined" ? firstName : "" %>">
+                    </fieldset>
+                    <fieldset>
+                        <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
+                        <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= typeof lastName != "undefined" ? lastName : "" %>">
+                    </fieldset>
+                </div>
                 <fieldset>
                     <label for="company">Company<span style="color: red">*</span>&nbsp;</label>
                     <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= typeof company != "undefined" ? company : "" %>">
@@ -47,7 +49,7 @@
                     <label for="password2">Confirm password<span style="color: red">*</span>&nbsp;</label>
                     <input id="password2" type="password" autocomplete="off" spellcheck="false" name="password2" placeholder="Confirm password" value="<%= typeof password2 != "undefined" ? password2 : "" %>">
                 </fieldset>
-                <input type="submit" value="Submit">
+                <input id="new-user-submit" class="btn btn-primary" type="submit" value="Submit">
             </form>
         </div>
     </div>
