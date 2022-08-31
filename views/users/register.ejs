@@ -10,11 +10,11 @@
 <%- include("../partials/navbar.ejs", {user: user}) %>
 <body id="register-page">
     <div id="register-container">
-        <form action="/users/register/newcustomer" method="GET">
-            <button type="submit" class="register-page-button-frame"><img src="/assets/images/customer-button.png" id="new-customer-button"></button>
-        </form>
         <form action="/users/register/newserviceprovider" method="GET">
             <button type="submit" class="register-page-button-frame"><img src="/assets/images/sp-button.png" id="new-sp-button"></button>
+        </form>
+        <form action="/users/register/newcustomer" method="GET">
+            <button type="submit" class="register-page-button-frame"><img src="/assets/images/customer-button.png" id="new-customer-button"></button>
         </form>
     </div>
 </body>
