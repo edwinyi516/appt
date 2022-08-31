@@ -8,63 +8,82 @@
     <title>Edit Profile - Appt</title>
 </head>
 <%- include("../partials/navbar.ejs", {user: user}) %>
-<body>
-    <h1>Edit Profile</h1>
-    <%- include("../partials/messages.ejs") %>
-    <a href="/dashboard">Dashboard</a>
-    <form action="/users/<%= user.id %>?_method=PUT" method="POST">
-        <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
-        <fieldset>
-            <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
-            <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
-        </fieldset>
-        <fieldset>
-            <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
-            <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
-        </fieldset>
+<body id="register-form-body">
+    <div id="register-form-page">
         <% if (user.usertype === "serviceprovider") { %>
-        <fieldset>
-            <label for="company">Company<span style="color: red">*</span>&nbsp;</label>
-            <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= user.company %>">
-        </fieldset>
-        <fieldset>
-            <label for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
-            <input id="description" type="text" autocomplete="off" spellcheck="false" name="description" placeholder="Description" value="<%= user.description %>">
-        </fieldset>
+            <div id="register-form-box-sp">
+        <% } else { %>
+            <div id="register-form-box-customer"></div>
         <% } %>
-        <fieldset>
-            <label for="email">Email<span style="color: red">*</span>&nbsp;</label>
-            <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= user.email %>">
-        </fieldset>
-        <fieldset>
-            <label for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
-            <input id="phone" type="tel" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= user.phone %>">
-        </fieldset>
-        <input class="btn btn-primary" type="submit" value="Save Changes">
-    </form>
-
-    <!-- Modal Trigger -->
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete User</button>
-    <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalTitle">Delete User</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            This action can not be undone.<br>Are you sure you want to delete this user?
-            </div>
-            <div class="modal-footer">
-            <form action="/users/deleteuser?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-danger">Delete User</button>
+            <h1 id="create-new-user-title">Edit Profile</h1>
+            <%- include("../partials/messages.ejs") %>
+            <a id="return-to-dashboard" href="/dashboard">Return to Dashboard</a>
+            <form id="sr-form" action="/users/<%= user.id %>?_method=PUT" method="POST">
+                <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
+                <div id="name-line">
+                    <fieldset id="sr-fieldset">
+                        <label id="sr-label" for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
+                        <input class="sr-input" id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
+                    </fieldset>
+                    <fieldset id="sr-fieldset">
+                        <label id="sr-label" for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
+                        <input class="sr-input" id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
+                    </fieldset>
+                </div>
+                <% if (user.usertype === "serviceprovider") { %>
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="company">Company<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= user.company %>">
+                </fieldset>
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="description" type="text" autocomplete="off" spellcheck="false" name="description" placeholder="Description" value="<%= user.description %>">
+                </fieldset>
+                <% } %>
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="email">Email<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= user.email %>">
+                </fieldset>
+                <fieldset id="sr-fieldset">
+                    <label id="sr-label" for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
+                    <input class="sr-input" id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" value="<%= user.phone %>" onkeypress="addDash()">
+                </fieldset>
+                <input id="new-user-submit" class="btn btn-primary" type="submit" value="Save Changes">
             </form>
+
+            <!-- Modal Trigger -->
+            <button id="delete-user-trigger" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete User</button>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalTitle">Delete User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    This action can not be undone.<br>Are you sure you want to delete this user?
+                    </div>
+                    <div class="modal-footer">
+                    <form action="/users/deleteuser?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete User</button>
+                    </form>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
         </div>
     </div>
+    <script>
+        const addDash = () => {
+            let inputValue = document.querySelector("#phone").value
+            let inputValueLength = inputValue.length
+            if(inputValue.length == 3 || inputValue.length == 7){
+                document.querySelector("#phone").value = inputValue + "-"
+            }
+        }
+    </script>        
 </body>
 </html>

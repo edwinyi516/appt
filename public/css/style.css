@@ -35,8 +35,8 @@ nav {
     margin-bottom: 10px;
 }
 #hi-user-nav {
+    font-family: "Raleway";
     color: #00438b;
-    font-family: "Raleway"
 }
 .dropdown-menu {
     font-family: "Raleway";
@@ -256,6 +256,8 @@ nav {
     align-self: center;
 }
 #register-form-box-sp {
+    display: flex;
+    flex-direction: column;
     margin-top: -50px;
     background-color: #e5f1ff;
     padding: 100px 80px 80px 80px;
@@ -264,6 +266,8 @@ nav {
     font-family: "Raleway";
 }
 #register-form-box-customer {
+    display: flex;
+    flex-direction: column;
     margin-top: -50px;
     background-color: #ddeeff;
     padding: 100px 80px 80px 80px;
@@ -308,6 +312,13 @@ nav {
     margin-top: 20px;
     width: 40%;
     align-self: center;
+}
+#return-to-dashboard {
+    width: fit-content;
+}
+#delete-user-trigger {
+    margin: 30px -40px -40px 0px;
+    align-self: flex-end;
 }
 
 
