@@ -200,7 +200,7 @@ nav {
 
 /*========== REGISTER MAIN PAGE ==========*/
 #register-page {
-    background-color: #deedff;
+    background-image: linear-gradient(#eff8ff 10%, #6cb1ff);
     height: 100%;
 }
 #register-container {
@@ -214,7 +214,7 @@ nav {
 .register-page-button-frame {
     border-radius: 40px;
     border-width: 6px;
-    margin: 0px 50px;
+    margin: -100px 50px 0px 50px;
     border-color: #7ebdff;
     background-color: #f0f8ff;
 }
@@ -238,6 +238,21 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#signin-form-box {
+    margin-top: -400px;
+}
+#signin-form-title {
+    font-family: "Raleway";
+    font-weight: 700;
+    font-size: 35px;
+    color: #00438b;
+    margin-bottom: 15px;
+}
+#signin-submit-button {
+    margin-top: 20px;
+    width: 40%;
+    align-self: center;
 }
 #register-form-box-sp {
     margin-top: -50px;

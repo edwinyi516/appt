@@ -8,19 +8,23 @@
     <title>Sign In - Appt</title>
 </head>
 <%- include("../partials/navbar.ejs", {user: user}) %>
-<body>
-    <h1>Sign In Page</h1>
-    <%- include("../partials/messages.ejs") %>
-    <form action="/users/signin" method="POST">
-        <fieldset>
-            <label for="email">Email:</label>
-            <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= typeof email != "undefined" ? email : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="password">Password:</label>
-            <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" placeholder="Password" value="<%= typeof password != "undefined" ? password : "" %>">
-        </fieldset>
-        <input type="submit" value="Submit">
-    </form>
+<body id="register-form-body">
+    <div id="register-form-page">
+        <div id="signin-form-box">
+            <h1 id="signin-form-title">Sign In</h1>
+            <%- include("../partials/messages.ejs") %>
+            <form action="/users/signin" method="POST">
+                <fieldset>
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" value="<%= typeof email != "undefined" ? email : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" value="<%= typeof password != "undefined" ? password : "" %>">
+                </fieldset>
+                <input id="signin-submit-button" class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
