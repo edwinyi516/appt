@@ -1,4 +1,5 @@
 # Appt
+![screenshots](https://user-images.githubusercontent.com/102695350/187797933-ea9a9820-6de2-457c-8e82-454d9e3c5578.png)
 
 ## Description
 Although I knew from the beginning that my timeline for this project would only be about a week and a half, I really wanted to challenge myself and see what I could create with what I've learned in 3 months of learning to code.<br>When I decided on creating an appointment booking platform, I don't think I quite realized how substantial of a challenge I was getting myself into.
@@ -15,9 +16,8 @@ As always, I appreciate any feedback for potential improvements/fixes.
 
 ### Languages
 - ![JavaScript](<https://img.shields.io/badge/-JavaScript-000?style=flat&logo=JavaScript>)
-- ![HTML](<https://img.shields.io/badge/-HTML-000?style=flat&logo=HTML5>)
+- ![HTML](<https://img.shields.io/badge/-HTML (EJS)-000?style=flat&logo=HTML5>)
 - ![CSS](<https://img.shields.io/badge/-CSS-000?style=flat&logo=CSS3>)
-- EJS
 
 ### Libraries & Frameworks
 - ![ExpressJS](<https://img.shields.io/badge/-ExpressJS-000?style=flat&logo=Express>)
