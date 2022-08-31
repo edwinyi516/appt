@@ -198,7 +198,7 @@ nav {
 }
 
 
-/*========== REGISTER PAGE ==========*/
+/*========== REGISTER MAIN PAGE ==========*/
 #register-page {
     background-color: #deedff;
     height: 100%;
@@ -224,6 +224,34 @@ nav {
 #new-customer-button, #new-sp-button {
     max-width: 350px;
     overflow: auto;
+}
+
+
+/*========== REGISTER FORM PAGE ==========*/
+#register-form-body {
+    height: 100%;
+}
+#register-form-page {
+    background-image: linear-gradient(#f0f7fd 10%, #c7e1ff);
+    margin-top: -93.5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#register-form-box {
+    margin-top: -50px;
+    background-color: #fafafa;
+    padding: 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50px;
+}
+#create-new-user-title {
+    font-family: "Raleway";
+    font-weight: 700;
+    font-size: 35px;
+    color: #00438b;
 }
 
 

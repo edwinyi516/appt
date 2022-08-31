@@ -8,45 +8,49 @@
     <title>New Service Provider - Appt</title>
 </head>
 <%- include("../partials/navbar.ejs") %>
-<body>
-    <h1>Create New Service Provider</h1>
-    <%- include("../partials/messages.ejs") %>
-    <form action="/users/register/newserviceprovider" method="POST">
-        <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
-        <fieldset>
-            <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
-            <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= typeof firstName != "undefined" ? firstName : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
-            <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= typeof lastName != "undefined" ? lastName : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="company">Company<span style="color: red">*</span>&nbsp;</label>
-            <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= typeof company != "undefined" ? company : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
-            <input id="description" type="textarea" autocomplete="off" spellcheck="false" name="description" placeholder="Description" value="<%= typeof description != "undefined" ? description : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="email">Email<span style="color: red">*</span>&nbsp;</label>
-            <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= typeof email != "undefined" ? email : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
-            <input id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()" oninvalid="this.setCustomValidity('Please input the correct format (e.g. 123-456-7890)')">
-        </fieldset>
-        <fieldset>
-            <label for="password">Password<span style="color: red">*</span>&nbsp;</label>
-            <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" placeholder="Password" value="<%= typeof password != "undefined" ? password : "" %>">
-        </fieldset>
-        <fieldset>
-            <label for="password2">Confirm password<span style="color: red">*</span>&nbsp;</label>
-            <input id="password2" type="password" autocomplete="off" spellcheck="false" name="password2" placeholder="Confirm password" value="<%= typeof password2 != "undefined" ? password2 : "" %>">
-        </fieldset>
-        <input type="submit" value="Submit">
-    </form>
+<body id="register-form-body">
+    <div id="register-form-page">
+        <div id="register-form-box">
+            <h1 id="create-new-user-title">Create New Service Provider</h1>
+            <%- include("../partials/messages.ejs") %>
+            <form action="/users/register/newserviceprovider" method="POST">
+                <p id="required-fields">All fields marked with an asterisk (<span style="color: red">*</span>) are required</p>
+                <fieldset>
+                    <label for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
+                    <input id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= typeof firstName != "undefined" ? firstName : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
+                    <input id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= typeof lastName != "undefined" ? lastName : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="company">Company<span style="color: red">*</span>&nbsp;</label>
+                    <input id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= typeof company != "undefined" ? company : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
+                    <input id="description" type="textarea" autocomplete="off" spellcheck="false" name="description" placeholder="Description" value="<%= typeof description != "undefined" ? description : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="email">Email<span style="color: red">*</span>&nbsp;</label>
+                    <input id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= typeof email != "undefined" ? email : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
+                    <input id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" placeholder="Phone Number" value="<%= typeof phone != "undefined" ? phone : "" %>" onkeypress="addDash()" oninvalid="this.setCustomValidity('Please input the correct format (e.g. 123-456-7890)')">
+                </fieldset>
+                <fieldset>
+                    <label for="password">Password<span style="color: red">*</span>&nbsp;</label>
+                    <input id="password" type="password" autocomplete="off" spellcheck="false" name="password" placeholder="Password" value="<%= typeof password != "undefined" ? password : "" %>">
+                </fieldset>
+                <fieldset>
+                    <label for="password2">Confirm password<span style="color: red">*</span>&nbsp;</label>
+                    <input id="password2" type="password" autocomplete="off" spellcheck="false" name="password2" placeholder="Confirm password" value="<%= typeof password2 != "undefined" ? password2 : "" %>">
+                </fieldset>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
     <script>
         const addDash = () => {
                 let inputValue = document.querySelector("#phone").value
