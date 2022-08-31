@@ -10,11 +10,7 @@
 <%- include("../partials/navbar.ejs", {user: user}) %>
 <body id="register-form-body">
     <div id="register-form-page">
-        <% if (user.usertype === "serviceprovider") { %>
             <div id="register-form-box-sp">
-        <% } else { %>
-            <div id="register-form-box-customer"></div>
-        <% } %>
             <h1 id="create-new-user-title">Edit Profile</h1>
             <%- include("../partials/messages.ejs") %>
             <a id="return-to-dashboard" href="/dashboard">Return to Dashboard</a>
