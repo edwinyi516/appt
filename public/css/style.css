@@ -337,6 +337,9 @@ nav {
 .availability-day {
     margin: 0px 50px 50px 50px;
 }
+#upcoming-appointments-card-div {
+    margin-bottom: 80px;
+}
 #past-in-order {
     font-style: italic;
     font-size: 20px;

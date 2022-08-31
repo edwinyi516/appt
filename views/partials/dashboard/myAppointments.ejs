@@ -14,13 +14,13 @@
                     <% } %>
                     <p class="card-text"><%= todaysAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= todaysAppointments[i].chosenTime %>&nbsp;(<%= todaysAppointments[i].chosenAppointmentTypeDuration %> min)</p>
                     <!-- Modal Trigger -->
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewTodaysAppointmentDetailsModal">View Details</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>">View Details</button>
                     <!-- Modal -->
-                    <div class="modal fade" id="viewTodaysAppointmentDetailsModal" tabindex="-1" role="dialog" aria-labelledby="viewTodaysAppointmentDetailsModal" aria-hidden="true">
+                    <div class="modal fade" id="viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>" tabindex="-1" role="dialog" aria-labelledby="viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="viewTodaysAppointmentDetailsModal">Appointment Details</h5>
+                                    <h5 class="modal-title" id="viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>">Appointment Details</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -87,13 +87,13 @@
                     <% } %>
                     <p class="card-text"><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %>&nbsp;(<%= upcomingAppointments[i].chosenAppointmentTypeDuration %> min)</p>
                     <!-- Modal Trigger -->
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewUpcomingAppointmentDetailsModal">View Details</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>">View Details</button>
                     <!-- Modal -->
-                    <div class="modal fade" id="viewUpcomingAppointmentDetailsModal" tabindex="-1" role="dialog" aria-labelledby="viewUpcomingAppointmentDetailsModal" aria-hidden="true">
+                    <div class="modal fade" id="viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>" tabindex="-1" role="dialog" aria-labelledby="viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" id="viewUpcomingAppointmentDetailsModal">Appointment Details</h5>
+                                    <h5 class="modal-title" id="viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>">Appointment Details</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
