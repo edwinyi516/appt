@@ -2,9 +2,7 @@ const express = require("express")
 const router = express.Router({ mergeParams: true })
 const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
-const Customer = require("../models/customers.js")
 const { ensureAuthenticated } = require("../config/auth.js")
-
 
 //NEW
 router.get("/new", ensureAuthenticated, async (req, res) => {
@@ -79,7 +77,7 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
 })
 
 //CREATE
-router.post("/new", (req, res) => {
+router.post("/new", ensureAuthenticated, (req, res) => {
     Appointment.create(req.body, (err, createdAppointment) => {
         if (err) {
 			console.log('error', err);
@@ -92,25 +90,12 @@ router.post("/new", (req, res) => {
 })
 
 //DESTROY (CANCEL)
-router.delete("/:id/cancel", (req, res) => {
+router.delete("/:id/cancel", ensureAuthenticated, (req, res) => {
     Appointment.findByIdAndRemove(req.params.id, (err, data) => {
         req.flash("success_msg", "Your appointment has been cancelled")
         res.redirect("/dashboard")
     })
 })
 
-//EDIT
-router.get("/:id/edit", (req, res) => {
-    Appointment.findById(req.params.id, (err, foundAppointment) => {
-        res.render("edit.ejs", { appointment: foundAppointment })
-    })
-})
-
-//UPDATE
-router.put("/:id", (req, res) => {
-    Appointment.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedAppointment) => {
-        res.redirect(`/appointments/${req.params.id}`)
-    })
-})
 
 module.exports = router

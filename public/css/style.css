@@ -45,7 +45,6 @@ nav {
     margin-left: 20px;
 }
 
-
 /*========== HOMEPAGE ==========*/
 /*Banner 1*/
 #homepage-banner-1 {
@@ -133,7 +132,6 @@ nav {
     font-family: "Raleway";
 }
 
-
 /*========== FOOTER ==========*/
 #footer-block {
     display: flex;
@@ -197,7 +195,6 @@ nav {
     cursor: default;
 }
 
-
 /*========== REGISTER MAIN PAGE ==========*/
 #register-page {
     background-image: linear-gradient(#eff8ff 10%, #6cb1ff);
@@ -225,7 +222,6 @@ nav {
     max-width: 350px;
     overflow: auto;
 }
-
 
 /*========== SIGN IN / REGISTER /EDIT FORM PAGES ==========*/
 #register-form-body {
@@ -321,7 +317,6 @@ nav {
     align-self: flex-end;
 }
 
-
 /*========== DASHBOARD ==========*/
 #dashboard-title {
     padding: 50px 50px 40px 50px;
@@ -388,7 +383,6 @@ nav {
     margin-top: 20px;
 }
 
-
 /*========== SERVICE PROVIDERS INDEX ==========*/
 #service-providers-title {
     width: 100%;
@@ -416,7 +410,6 @@ nav {
     color: #00438b;
     font-style: italic;
 }
-
 
 /*========== APPOINTMENT BOOKING ==========*/
 #book-appointment-page {
@@ -467,7 +460,6 @@ nav {
     margin-top: 25px;
 }
 
-
 /*========== BOOTSTRAP CUSTOMIZATION ==========*/
 .modal-body {
     margin: 10px 0px 15px 0px;
@@ -475,7 +467,6 @@ nav {
 .modal-dialog {
     margin-top: -93.5px;
 }
-
 
 /*========== MEDIA QUERIES ==========*/
 @media (max-width: 1250px) {

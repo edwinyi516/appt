@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router({ mergeParams: true })
 const ServiceProvider = require("../models/serviceproviders.js")
-const Appointment = require("../models/appointments")
 const { ensureAuthenticated } = require("../config/auth.js")
 
 
@@ -39,7 +38,7 @@ const appointmentController = require("../controllers/appointmentController.js")
 router.use("/:id/appointments", appointmentController)
 
 //UPDATE
-router.put("/updateavailability", (req, res) => {
+router.put("/updateavailability", ensureAuthenticated, (req, res) => {
     if (req.body.availableSunday === 'on') {
 		req.body.availableSunday = true;
 	} else {

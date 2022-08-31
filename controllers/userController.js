@@ -26,7 +26,7 @@ router.post("/register/newcustomer", (req, res) => {
     if(password !== password2) {
         errors.push({ msg: "Passwords do not match" })
     }
-    //Check passwords length
+    //Check password length
     if(password.length < 6) {
         errors.push({ msg: "Password must be at least 6 characters long" })
     }
@@ -46,7 +46,7 @@ router.post("/register/newcustomer", (req, res) => {
         Customer.findOne({ email: email })
             .then(user => {
                 if(user) {
-                    errors.push({ msg: "User already exists with that email"})
+                    errors.push({ msg: "User with that email already exists"})
                     res.render("users/newCustomer.ejs", {
                         user: undefined,
                         errors,
@@ -72,7 +72,7 @@ router.post("/register/newcustomer", (req, res) => {
                         newCustomer.password = hash
                         newCustomer.save()
                             .then(user => {
-                                req.flash("success_msg", "You are now registered and can log in!")
+                                req.flash("success_msg", "Your account was successfully created!")
                                 res.redirect("/users/signin")
                             })
                             .catch(err => console.log(err))
@@ -153,7 +153,7 @@ router.post("/register/newserviceprovider", (req, res) => {
                         newServiceProvider.password = hash
                         newServiceProvider.save()
                             .then(user => {
-                                req.flash("success_msg", "You are now registered and can log in!")
+                                req.flash("success_msg", "Your account was successfully created!")
                                 res.redirect("/users/signin/")
                             })
                             .catch(err => console.log(err))
