@@ -331,7 +331,7 @@ nav {
     font-family: "Raleway";
     font-weight: 800;
     font-size: 50px;
-    color: #e2f0ff;
+    color: #f0f7ff;
 }
 #dash-welcome-text {
     font-family: "Raleway";
@@ -415,6 +415,56 @@ nav {
 .sp-card-description {
     color: #00438b;
     font-style: italic;
+}
+
+
+/*========== APPOINTMENT BOOKING ==========*/
+#book-appointment-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#book-appointment-title {
+    width: 100%;
+    text-align: center;
+    font-family: "Raleway";
+    font-weight: 700;
+    font-size: 45px;
+    color: #00438b;
+    margin: 60px 0px;
+}
+#book-appointment-box {
+    display: flex;
+    justify-content: center;
+    background-color: #f6faff;
+    padding: 60px;
+    border-radius: 40px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #e5f0ff;
+    font-family: "Raleway";
+    min-width: 600px;
+}
+#new-appointment-form {
+    display: flex;
+    flex-direction: column;
+}
+#na-label {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+#chosenAppointmentTypeDuration, #chosenDate, #chosenTime {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    min-width: 250px;
+    border-radius: 4px;
+    border-width: 1.5px;
+    border-color: #d5d5d5;
+}
+.book-appointment-button {
+    margin-top: 25px;
 }
 
 

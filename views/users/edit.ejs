@@ -23,26 +23,26 @@
                 <div id="name-line">
                     <fieldset id="sr-fieldset">
                         <label id="sr-label" for="firstName">First Name<span style="color: red">*</span>&nbsp;</label>
-                        <input class="sr-input" id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
+                        <input class="sr-input" id="firstName" type="text" autocomplete="off" spellcheck="false" name="firstName" value="<%= user.firstName %>">
                     </fieldset>
                     <fieldset id="sr-fieldset">
                         <label id="sr-label" for="lastName">Last Name<span style="color: red">*</span>&nbsp;</label>
-                        <input class="sr-input" id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
+                        <input class="sr-input" id="lastName" type="text" autocomplete="off" spellcheck="false" name="lastName" value="<%= user.lastName %>">
                     </fieldset>
                 </div>
                 <% if (user.usertype === "serviceprovider") { %>
                 <fieldset id="sr-fieldset">
                     <label id="sr-label" for="company">Company<span style="color: red">*</span>&nbsp;</label>
-                    <input class="sr-input" id="company" type="text" autocomplete="off" spellcheck="false" name="company" placeholder="Company" value="<%= user.company %>">
+                    <input class="sr-input" id="company" type="text" autocomplete="off" spellcheck="false" name="company" value="<%= user.company %>">
                 </fieldset>
                 <fieldset id="sr-fieldset">
                     <label id="sr-label" for="description">Describe your company<span style="color: red">*</span>&nbsp;</label>
-                    <input class="sr-input" id="description" type="text" autocomplete="off" spellcheck="false" name="description" placeholder="Description" value="<%= user.description %>">
+                    <input class="sr-input" id="description" type="text" autocomplete="off" spellcheck="false" name="description" value="<%= user.description %>">
                 </fieldset>
                 <% } %>
                 <fieldset id="sr-fieldset">
                     <label id="sr-label" for="email">Email<span style="color: red">*</span>&nbsp;</label>
-                    <input class="sr-input" id="email" type="email" autocomplete="off" spellcheck="false" name="email" placeholder="Email" value="<%= user.email %>">
+                    <input class="sr-input" id="email" type="email" autocomplete="off" spellcheck="false" name="email" value="<%= user.email %>">
                 </fieldset>
                 <fieldset id="sr-fieldset">
                     <label id="sr-label" for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>

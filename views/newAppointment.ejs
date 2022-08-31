@@ -10,45 +10,47 @@
 </head>
 <%- include("./partials/navbar.ejs", {user: user}) %>
 <body>
-    <h1>Book an Appointment with <%= serviceProvider.company %></h1>
-    <form name="new-appointment-form" id="new-appointment-form" action="/appointments/new" method="POST">
-        <label for="chosenAppointmentTypeDuration">Choose appointment type: </label>
-        <select name="chosenAppointmentTypeDuration" id="chosenAppointmentTypeDuration" form="new-appointment-form">
-            <% if (serviceProvider.appointmentTypes.length === 0) { %>
-                <option id="select-one" value="" disabled selected>No appointment types available</option>
-            <% } else { %>           
-                <option id="select-one" value="" disabled selected>Select One</option>
-                <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
-                <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
-                <% } %>
-            <% } %>
-        </select>
-        <input id="chosenAppointmentType" name="chosenAppointmentType" type="text" hidden>
-        <fieldset class="availability-date" id="availability-date">
-            <label class="form-check-label" for="availableSaturday">Choose a date:</label>
-            <div class="availability-block" id="availability-block">
-                <input class="form-control current-availability-date" name="chosenDate" id="chosenDate" value="">
-            </div>
-        </fieldset>
-        <fieldset class="availability-time" id="availability-time">
-            <label class="form-check-label" for="availabilityTime">Choose a time:</label>
-            <div class="availability-block" id="availability-block">
-                <input id="chosenTime" type="text" name="chosenTime" value="">
-            </div>
-        </fieldset>
-        <input name="customer" value="<%= user.id %>" hidden>
-        <input name="customerName" value="<%= user.firstName %> <%= user.lastName %>" hidden>
-        <input name="customerPhone" value="<%= user.phone %>" hidden>
-        <input name="customerEmail" value="<%= user.email %>" hidden>
-        <input name="serviceprovider" value="<%= serviceProvider.id %>" hidden>
-        <input name="serviceproviderName" value="<%= serviceProvider.company %>" hidden>
-        <input name="serviceproviderPhone" value="<%= serviceProvider.phone %>" hidden>
-        <input name="serviceproviderEmail" value="<%= serviceProvider.email %>" hidden>
-        <input id="bookedAppointmentsArray" value="<%= bookedAppointmentsArray %>" hidden>
-        <input id="submit-button" type="submit" value="Book Appointment">
-    </form>
-
-
+    <div id="book-appointment-page">
+        <h1 id="book-appointment-title">Book an Appointment with<br><%= serviceProvider.company %></h1>
+        <div id="book-appointment-box">
+            <form name="new-appointment-form" id="new-appointment-form" action="/appointments/new" method="POST">
+                <label id="na-label" for="chosenAppointmentTypeDuration">Choose appointment type: </label>
+                <select name="chosenAppointmentTypeDuration" id="chosenAppointmentTypeDuration" form="new-appointment-form">
+                    <% if (serviceProvider.appointmentTypes.length === 0) { %>
+                        <option id="select-one" value="" disabled selected>No appointment types available</option>
+                    <% } else { %>           
+                        <option id="select-one" value="" disabled selected>Select One</option>
+                        <% for (i = 0; i < serviceProvider.appointmentTypes.length; i++) { %>
+                        <option id="appointment-type-title" value="<%= serviceProvider.appointmentTypes[i].duration %>"><%= serviceProvider.appointmentTypes[i].title %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+                <input id="chosenAppointmentType" name="chosenAppointmentType" type="text" hidden>
+                <fieldset class="availability-date" id="availability-date">
+                    <label id="na-label" class="form-check-label" for="availableSaturday">Choose a date:</label>
+                    <div class="availability-block" id="availability-block">
+                        <input class="form-control current-availability-date" name="chosenDate" id="chosenDate" value="">
+                    </div>
+                </fieldset>
+                <fieldset class="availability-time" id="availability-time">
+                    <label id="na-label" class="form-check-label" for="availabilityTime">Choose a time:</label>
+                    <div class="availability-block" id="availability-block">
+                        <input id="chosenTime" type="text" name="chosenTime" value="">
+                    </div>
+                </fieldset>
+                <input name="customer" value="<%= user.id %>" hidden>
+                <input name="customerName" value="<%= user.firstName %> <%= user.lastName %>" hidden>
+                <input name="customerPhone" value="<%= user.phone %>" hidden>
+                <input name="customerEmail" value="<%= user.email %>" hidden>
+                <input name="serviceprovider" value="<%= serviceProvider.id %>" hidden>
+                <input name="serviceproviderName" value="<%= serviceProvider.company %>" hidden>
+                <input name="serviceproviderPhone" value="<%= serviceProvider.phone %>" hidden>
+                <input name="serviceproviderEmail" value="<%= serviceProvider.email %>" hidden>
+                <input id="bookedAppointmentsArray" value="<%= bookedAppointmentsArray %>" hidden>
+                <input id="submit-button" class="btn btn-primary book-appointment-button" type="submit" value="Book Appointment">
+            </form>
+        </div>
+    </div>
     <script>
         //DOM
         let chosenAppointmentTypeDuration = document.querySelector("#chosenAppointmentTypeDuration")
@@ -102,7 +104,7 @@
         $(document).ready(function() {
             $('#chosenTime').timepicker({
                 disableTextInput: true,
-                disableTimeRanges: [["12am","8am"], ["4pm", "11:59pm"]]
+                disableTimeRanges: [["12am", "8am"], ["4pm", "11:59pm"]]
             });
         });
         

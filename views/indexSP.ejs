@@ -30,8 +30,7 @@
                         </div>
                         <div class="modal-body">
                             <p class="sp-card-description"><%= serviceProviders[i].description %></p>
-                            <p>Phone: <%= serviceProviders[i].phone %></p>
-                            <p>Email: <%= serviceProviders[i].email %></p>
+                            <p>Phone: <%= serviceProviders[i].phone %><br>Email: <%= serviceProviders[i].email %></p>
                             <a href="/sp/<%= serviceProviders[i].id %>/appointments/new"><button class="btn btn-primary">Book an Appointment</button></a>
                         </div>
                     </div>
