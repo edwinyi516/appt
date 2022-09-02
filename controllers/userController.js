@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt")
 const passport = require("passport")
 const ServiceProvider = require("../models/serviceproviders.js")
 const Customer = require("../models/customers.js")
+const Appointment = require("../models/appointments.js")
 const { ensureAuthenticated } = require("../config/auth.js")
 
 
@@ -266,13 +267,15 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
 })
 
 //DELETE USER
-router.delete("/deleteuser", ensureAuthenticated, (req, res) => {
+router.delete("/deleteuser", ensureAuthenticated, async (req, res) => {
     if(req.user.usertype === "serviceprovider") {
+        await Appointment.deleteMany( { $or: [ { serviceprovider: req.user.id }, { customer: req.user.id } ] } )
         ServiceProvider.findByIdAndRemove(req.user.id, (err, data) => {
             res.redirect("/")
         })
     }
     else {
+        await Appointment.deleteMany( { customer: req.user.id } )
         Customer.findByIdAndRemove(req.user.id, (err, data) => {
             res.redirect("/")
         })
