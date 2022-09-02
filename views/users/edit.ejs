@@ -44,30 +44,32 @@
                     <label id="sr-label" for="phone">Phone Number<span style="color: red">*</span>&nbsp;</label>
                     <input class="sr-input" id="phone" type="tel" maxlength="12" minlength="12" autocomplete="off" spellcheck="false" name="phone" value="<%= user.phone %>" onkeypress="addDash()">
                 </fieldset>
-                <input id="new-user-submit" class="btn btn-primary" type="submit" value="Save Changes">
+                <div id="edit-profile-buttons">
+                    <!-- Modal Trigger -->
+                    <button id="delete-user-trigger" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
+                    <input id="edit-profile-save" class="btn btn-primary" type="submit" value="Save Changes">
+                </div>
             </form>
 
-            <!-- Modal Trigger -->
-            <button id="delete-user-trigger" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
             <!-- Modal -->
             <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalTitle">Delete Account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalTitle">Delete Account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            All account information and appointments will be deleted.<br>This action can not be undone.<br><br><strong>Are you sure you want to delete this user?</strong>
+                        </div>
+                        <div class="modal-footer">
+                        <form action="/users/deleteuser?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete Account</button>
+                        </form>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        All account information and appointments will be deleted.<br>This action can not be undone.<br><br>Are you sure you want to delete this user?
-                    </div>
-                    <div class="modal-footer">
-                    <form action="/users/deleteuser?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Delete Account</button>
-                    </form>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>

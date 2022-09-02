@@ -257,7 +257,7 @@ nav {
     flex-direction: column;
     margin-top: -50px;
     background-color: #e5f1ff;
-    padding: 100px 80px 80px 80px;
+    padding: 80px 80px 80px 80px;
     border-style: hidden;
     border-radius: 40px;
     font-family: "Raleway";
@@ -313,9 +313,14 @@ nav {
 #return-to-dashboard {
     width: fit-content;
 }
-#delete-user-trigger {
-    margin: 30px -40px -40px 0px;
-    align-self: flex-end;
+#edit-profile-buttons {
+    display: flex;
+    margin-top: 30px;
+}
+#edit-profile-save {
+    margin-left: auto;
+    margin-right: 0;
+    width: 225px;
 }
 
 /*========== DASHBOARD ==========*/
