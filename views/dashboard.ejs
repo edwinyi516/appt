@@ -36,9 +36,19 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="my-appointments" role="tabpanel" aria-labelledby="my-appointments-tab">
+                <% if (user.usertype === "customer") { %>
+                    <form action="/sp">
+                        <button type="submit" class="btn btn-primary" id="dashboard-to-new-appointment-button">Book a New Appointment</button>
+                    </form>
+                <% } %>
                 <%- include("./partials/dashboard/myAppointments.ejs", {user: user}) %>
             </div>
             <div class="tab-pane fade" id="past-appointments" role="tabpanel" aria-labelledby="past-appointments-tab">
+                <% if (user.usertype === "customer") { %>
+                    <form action="/sp">
+                        <button type="submit" class="btn btn-primary" id="dashboard-to-new-appointment-button">Book a New Appointment</button>
+                    </form>
+                <% } %>
                 <%- include("./partials/dashboard/past.ejs", {user: user}) %>
             </div>
             <% if (user.usertype === "serviceprovider") { %>

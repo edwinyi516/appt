@@ -340,6 +340,9 @@ nav {
     color: #ffffff;
     margin-left: 5px;
 }
+#dashboard-to-new-appointment-button {
+    margin-bottom: 40px;
+}
 .availability-day {
     margin: 0px 50px 50px 50px;
 }
@@ -355,7 +358,7 @@ nav {
 }
 .tab-content {
     margin: 0px 50px;
-    padding: 10px 40px;
+    padding: 0px 40px;
 }
 #availability-form {
     display: flex;
