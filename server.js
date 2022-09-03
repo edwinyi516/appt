@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 
 /*========================================*/
 
-//ROUTES
+//MAIN ROUTES
 
 //Controllers
 const userController = require("./controllers/userController.js")

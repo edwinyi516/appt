@@ -4,6 +4,7 @@ const Appointment = require("../models/appointments.js")
 const ServiceProvider = require("../models/serviceproviders.js")
 const { ensureAuthenticated } = require("../config/auth.js")
 
+
 //NEW
 router.get("/new", ensureAuthenticated, async (req, res) => {
     let serviceProvider = await ServiceProvider.findById(req.params.id)
@@ -34,6 +35,7 @@ router.get("/new", ensureAuthenticated, async (req, res) => {
         }
         bookedAppointmentsArray.push([bookedAppointments[i].chosenTime, joinedTime]);
     }
+    //10 is just an arbitrary number outside of Flatpickr's range for disabling days of the week
     let sunday = 10
     let monday = 10
     let tuesday = 10

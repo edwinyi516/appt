@@ -1,6 +1,6 @@
 <h3>Today's Appointments</h3>
 <% if (todaysAppointments.length === 0) { %>
-<p>No appointments today!</p>
+    <p>No appointments today!</p>
 <% } else { %>
     <div id="todays-appointments-card-div">
         <% for (i = 0; i < todaysAppointments.length; i++) { %>
@@ -8,14 +8,14 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= todaysAppointments[i].chosenAppointmentType %></h5>
                     <% if (user.usertype === "serviceprovider") { %>
-                    <p class="card-text">with <%= todaysAppointments[i].customerName %></p>
+                        <p class="card-text">with <%= todaysAppointments[i].customerName %></p>
                     <% } else { %>
-                    <p class="card-text">with <%= todaysAppointments[i].serviceproviderName %></p>
+                        <p class="card-text">with <%= todaysAppointments[i].serviceproviderName %></p>
                     <% } %>
                     <p class="card-text"><%= todaysAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= todaysAppointments[i].chosenTime %>&nbsp;(<%= todaysAppointments[i].chosenAppointmentTypeDuration %> min)</p>
-                    <!-- Modal Trigger -->
+                    <!-- Today's Appointments Details Modal Trigger -->
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>">View Details</button>
-                    <!-- Modal -->
+                    <!-- Today's Appointments Details Modal -->
                     <div class="modal fade" id="viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>" tabindex="-1" role="dialog" aria-labelledby="viewTodaysAppointmentDetailsModal<%= todaysAppointments[i].id %>" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -40,29 +40,29 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Modal Trigger -->
+                    <!-- Cancel Today's Appointment Modal Trigger -->
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelTodaysAppointmentModal">Cancel</button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="cancelTodaysAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="cancelTodaysAppointmentModalTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="cancelTodaysAppointmentModalTitle">Cancel Appointment</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
+                    <!-- Cancel Today's Appointment Modal -->
+                    <div class="modal fade" id="cancelTodaysAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="cancelTodaysAppointmentModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="cancelTodaysAppointmentModalTitle">Cancel Appointment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
                                     Are you sure you want to cancel this appointment?
-                                    </div>
-                                    <div class="modal-footer">
+                                </div>
+                                <div class="modal-footer">
                                     <form action="/appointments/<%= todaysAppointments[i].id %>/cancel?_method=DELETE" method="POST">
                                     <button type="submit" class="btn btn-danger">Cancel Appointment</button>
                                     </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         <% } %>
@@ -73,7 +73,7 @@
 
 <h4>Upcoming Appointments</h4>
 <% if (upcomingAppointments.length === 0) { %>
-<p>You have no upcoming appointments!</p>
+    <p>You have no upcoming appointments!</p>
 <% } else { %>
     <div id="upcoming-appointments-card-div">
         <% for (i = 0; i < upcomingAppointments.length; i++) { %>
@@ -81,18 +81,18 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= upcomingAppointments[i].chosenAppointmentType %></h5>
                     <% if (user.usertype === "serviceprovider") { %>
-                    <p class="card-text">with <%= upcomingAppointments[i].customerName %></p>
+                        <p class="card-text">with <%= upcomingAppointments[i].customerName %></p>
                     <% } else { %>
-                    <p class="card-text">with <%= upcomingAppointments[i].serviceproviderName %></p>
+                        <p class="card-text">with <%= upcomingAppointments[i].serviceproviderName %></p>
                     <% } %>
                     <p class="card-text"><%= upcomingAppointments[i].chosenDate.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %><br><%= upcomingAppointments[i].chosenTime %>&nbsp;(<%= upcomingAppointments[i].chosenAppointmentTypeDuration %> min)</p>
-                    <!-- Modal Trigger -->
+                    <!-- Upcoming Appointments Details Modal Trigger -->
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>">View Details</button>
-                    <!-- Modal -->
+                    <!-- Upcoming Appointments Details Modal -->
                     <div class="modal fade" id="viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>" tabindex="-1" role="dialog" aria-labelledby="viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
                                     <h5 class="modal-title" id="viewUpcomingAppointmentDetailsModal<%= upcomingAppointments[i].id %>">Appointment Details</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -113,25 +113,25 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Modal Trigger -->
+                    <!-- Cancel Upcoming Appointment Modal Trigger -->
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelUpcomingAppointmentModal">Cancel</button>
-                    <!-- Modal -->
+                    <!-- Cancel Upcoming Appointment Modal -->
                     <div class="modal fade" id="cancelUpcomingAppointmentModal" tabindex="-1" role="dialog" aria-labelledby="cancelUpcomingAppointmentModalTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="cancelUpcomingAppointmentModalTitle">Cancel Appointment</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                    <h5 class="modal-title" id="cancelUpcomingAppointmentModalTitle">Cancel Appointment</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                                 <div class="modal-body">
-                                Are you sure you want to cancel this appointment?
+                                    Are you sure you want to cancel this appointment?
                                 </div>
                                 <div class="modal-footer">
-                                <form action="/appointments/<%= upcomingAppointments[i].id%>/cancel?_method=DELETE" method="POST">
-                                <button type="submit" class="btn btn-danger">Cancel Appointment</button>
-                                </form>
+                                    <form action="/appointments/<%= upcomingAppointments[i].id%>/cancel?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-danger">Cancel Appointment</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

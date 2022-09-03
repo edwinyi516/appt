@@ -12,32 +12,32 @@
     <div id="service-providers-title">Service Providers</div>
     <div id="service-providers-index-card-div">
         <% for (let i = 0; i < serviceProviders.length; i++) { %>
-        <div class="card mx-4" id="sp-index-card">
-            <div class="card-body">
-                <h5 class="card-title" id="sp-card-title"><%= serviceProviders[i].company %></h5>
-                <p class="sp-card-description"><%= serviceProviders[i].description %></p>
-                <!-- Modal Trigger -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewSPDetailsModal<%= serviceProviders[i].id %>">View Details</button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewSPDetailsModal<%= serviceProviders[i].id %>" tabindex="-1" role="dialog" aria-labelledby="viewSPDetailsModal<%= serviceProviders[i].id %>Title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="viewSPDetailsModal<%= serviceProviders[i].id %>Title"><%= serviceProviders[i].company %></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div class="card mx-4" id="sp-index-card">
+                <div class="card-body">
+                    <h5 class="card-title" id="sp-card-title"><%= serviceProviders[i].company %></h5>
+                    <p class="sp-card-description"><%= serviceProviders[i].description %></p>
+                    <!-- View Service Provider Details Modal Trigger -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewSPDetailsModal<%= serviceProviders[i].id %>">View Details</button>
+                    <!-- View Service Provider Details Modal -->
+                    <div class="modal fade" id="viewSPDetailsModal<%= serviceProviders[i].id %>" tabindex="-1" role="dialog" aria-labelledby="viewSPDetailsModal<%= serviceProviders[i].id %>Title" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="viewSPDetailsModal<%= serviceProviders[i].id %>Title"><%= serviceProviders[i].company %></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="sp-card-description"><%= serviceProviders[i].description %></p>
+                                    <p>Phone: <%= serviceProviders[i].phone %><br>Email: <%= serviceProviders[i].email %></p>
+                                    <a href="/sp/<%= serviceProviders[i].id %>/appointments/new"><button class="btn btn-primary">Book an Appointment</button></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <p class="sp-card-description"><%= serviceProviders[i].description %></p>
-                            <p>Phone: <%= serviceProviders[i].phone %><br>Email: <%= serviceProviders[i].email %></p>
-                            <a href="/sp/<%= serviceProviders[i].id %>/appointments/new"><button class="btn btn-primary">Book an Appointment</button></a>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
-        </div>
         <% } %>
     </div>
 </body>
